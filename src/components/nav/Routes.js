@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "../../pages/home/Home";
 import Accommodations from "../../pages/accommodations/Accommodations";
+import AccommodationsDetails from "../accommodations/AccommodationsDetails";
 import Admin from "../../pages/admin/Admin";
 import Enquiries from "../../pages/enquiries/Enquiries";
 import Favourites from "../../pages/favourites/Favourites";
@@ -35,6 +36,9 @@ function Routes() {
           </Route>
           <Route exact path="/favourites">
             <Favourites />
+          </Route>
+          <Route exact path="/accommodations/:id">
+            <AccommodationsDetails />
           </Route>
         </Switch>
       </Container>
