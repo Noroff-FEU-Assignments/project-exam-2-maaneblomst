@@ -13,6 +13,7 @@ import Login from "../../pages/login/Login";
 import Contact from "../../pages/contact/Contact";
 import Navigation from "../nav/Nav";
 import Container from "react-bootstrap/Container";
+import FooterNav from "./FooterNav";
 
 function Routes() {
   return (
@@ -58,6 +59,7 @@ function Routes() {
           </Route>
         </Switch>
       </Container>
+      <FooterNav />
     </Router>
   );
 }

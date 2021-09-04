@@ -20,10 +20,12 @@ function SecondaryNav() {
         <NavDropdown title="My Account" id="basic-nav-dropdown">
           {auth ? (
             <>
-              <NavDropdown.Item>
-                <Link to="/admin" className="basic-nav-dropdown">
-                  Dashboard
-                </Link>
+              <NavDropdown.Item
+                as={Link}
+                to="/admin"
+                className="basic-nav-dropdown"
+              >
+                Dashboard
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <Button variant="link" onClick={logOut}>
@@ -31,10 +33,12 @@ function SecondaryNav() {
               </Button>
             </>
           ) : (
-            <NavDropdown.Item>
-              <Link to="/login" className="basic-nav-dropdown">
-                Login
-              </Link>
+            <NavDropdown.Item
+              as={Link}
+              to="/login"
+              className="basic-nav-dropdown"
+            >
+              Login
             </NavDropdown.Item>
           )}
         </NavDropdown>

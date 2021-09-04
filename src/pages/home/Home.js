@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Hero from "../../images/home/bergen_home.jpg";
 import { PopularObjects } from "../../components/accommodations/PopularObjects";
-import Row from "react-bootstrap/Row";
 
 function Home() {
   return (

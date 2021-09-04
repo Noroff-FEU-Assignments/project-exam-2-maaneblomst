@@ -39,11 +39,12 @@ export function MessagesList() {
     <Container className="messages">
       {messages.map((request) => {
         const name = request.name;
+        const id = request.id;
         const email = request.email;
         const message = request.message;
 
         return (
-          <li>
+          <li key={id}>
             Name:{name}, E-mail:{email}, Message: {message}
           </li>
         );

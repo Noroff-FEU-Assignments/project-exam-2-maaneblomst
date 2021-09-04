@@ -39,13 +39,14 @@ export function EnquiriesList() {
     <Container className="enquiries">
       {enquiries.map((request) => {
         const name = request.name;
+        const id = request.id;
         const email = request.email;
         const date = request.date;
         const accommodation = request.accommodation;
         const message = request.message;
 
         return (
-          <ul>
+          <ul key={id}>
             <li>Name:{name}</li>
             <li>E-mail:{email}</li>
             <li>Date: {date}</li>
