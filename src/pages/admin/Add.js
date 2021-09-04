@@ -1,12 +1,12 @@
 import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
 
-function Favourites() {
+function Add() {
   return (
     <Container>
-      <Heading size="1" content="Favourites" />
+      <Heading size="1" content="Add" />
     </Container>
   );
 }
 
-export default Favourites;
+export default Add;

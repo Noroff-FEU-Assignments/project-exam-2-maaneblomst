@@ -1,14 +1,14 @@
-import EnquiryForm from "../../components/forms/EnquiryForm";
+import { EnquiriesList } from "../../components/enquiries/EnquiriesList";
 import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
 
-function Enquiries() {
+function AdminEnquiries() {
   return (
     <Container>
       <Heading size="1" content="Enquiries" />
-      <EnquiryForm />
+      <EnquiriesList />
     </Container>
   );
 }
 
-export default Enquiries;
+export default AdminEnquiries;

@@ -34,10 +34,10 @@ export default function AccommodationsDetails() {
 
   if (loadError) return <div>Error loading</div>;
 
-  const name = accommodation.Name;
-  const desc = accommodation.Description;
-  const price = accommodation.Price;
-  const image = accommodation.Image[0].url;
+  const name = accommodation.name;
+  const desc = accommodation.description;
+  const price = accommodation.price;
+  const image = accommodation.images[0].url;
 
   return (
     <Container>

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants/Api";
 import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
+import ItemCard from "../cards/Cards";
+import Row from "react-bootstrap/Row";
 
-export default function AccommodationsList() {
+export function PopularObjects() {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,7 +24,6 @@ export default function AccommodationsList() {
       }
     }
     getAccommodations();
-    console.log(accommodations);
     // eslint-disable-next-line
   }, []);
 
@@ -32,25 +31,23 @@ export default function AccommodationsList() {
 
   if (error) return <div>Error loading accommodations</div>;
 
-  return (
-    <Container className="accommodations">
-      {accommodations.map((accommodation) => {
-        const name = accommodation.Name;
-        const id = accommodation.id;
-        const desc = accommodation.Description;
-        const price = accommodation.Price;
-        const image = accommodation.Image[0].formats.small.url;
+  const filtered = accommodations.filter(
+    (accommodation) => accommodation.popular === true
+  );
 
-        return (
-          <Container key={id} className="accommodation mt-4 p-0">
-            <Image fluid src={image} />
-            <h2>{name} </h2>
-            <p>{desc}</p>
-            <span className="d-block p-2">{price}</span>
-            <Link to={`/accommodations/${id}`}>Read more</Link>
-          </Container>
-        );
-      })}
+  return (
+    <Container className="popularObjects">
+      <Row>
+        {filtered.map((popObject) => (
+          <ItemCard
+            key={popObject.id}
+            id={popObject.id}
+            name={popObject.name}
+            price={popObject.price}
+            image={popObject.images[0].formats.small.url}
+          />
+        ))}
+      </Row>
     </Container>
   );
 }
