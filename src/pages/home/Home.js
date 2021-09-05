@@ -1,16 +1,32 @@
+import { PopularObjects } from "../../components/accommodations/PopularObjects";
+import SearchBar from "../../components/search/SearchBar";
 import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
-import Hero from "../../images/home/bergen_home.jpg";
-import { PopularObjects } from "../../components/accommodations/PopularObjects";
+import Row from "react-bootstrap/Row";
+import IconGroup from "../../components/common/IconGroup";
+import { DistributeVertical } from "react-bootstrap-icons";
 
 function Home() {
   return (
-    <Container>
-      <Heading size="1" display="d-none" content="Home" />
-      <Image src={Hero} width={1300} className="mb-2" fluid alt="image"></Image>
-      <PopularObjects />
-    </Container>
+    <>
+      <div className="hero-image">
+        <Container className="hero-search">
+          <Heading size="1" content="Book your next stay in Bergen" />
+          <SearchBar />
+        </Container>
+      </div>
+      <Container className="fs-3 text-center p-5">
+        <p>
+          An authentic experience of the beautiful pearl on the coast of Norway
+        </p>
+      </Container>
+      <Row className="text-center p-2 mb-2">
+        <IconGroup />
+      </Row>
+      <Row>
+        <PopularObjects />
+      </Row>
+    </>
   );
 }
 export default Home;

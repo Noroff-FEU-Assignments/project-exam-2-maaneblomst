@@ -7,7 +7,7 @@ import logo from "../../images/logos/brand_logo_dark.png";
 
 function FooterNav() {
   return (
-    <Navbar variant="dark" bg="dark" expand="lg" className="mt-2 sticky-bottom">
+    <Navbar variant="dark" bg="dark" expand="lg" className="mt-2">
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar" />
         <Navbar.Collapse id="basic-navbar">

@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../constants/Api";
 import axios from "axios";
+import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Heading from "../common/Heading";
+import { PopularObjects } from "./PopularObjects";
+import { EmojiHeartEyes } from "react-bootstrap-icons";
 
 export default function AccommodationsDetails() {
   const [accommodation, setAccommodation] = useState(null);
@@ -40,11 +47,60 @@ export default function AccommodationsDetails() {
   const image = accommodation.images[0].url;
 
   return (
-    <Container>
+    <>
       <Image fluid src={image} />
-      <h1>{name}</h1>
-      <p>{desc}</p>
-      <span>{price}</span>
-    </Container>
+      <Row>
+        <Col>
+          <h1>{name}</h1>
+        </Col>
+        <Col>
+          <span>
+            FROM
+            <span className="text-primary font-weight-bold h4">{price}</span>
+            NOK
+          </span>
+          <Link to="/enquiries" className="d-block">
+            <Button className="btn-lg text-white">Book Now</Button>
+          </Link>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Heading size="4" content="Description" />
+          <p>{desc}</p>
+          <Heading size="4" content="Facilities" />
+          <p>Facilities goes here</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <span>
+            FROM
+            <span className="text-primary font-weight-bold h4">{price}</span>
+            NOK
+          </span>
+          <Link to="/enquiries" className="d-block">
+            <Button className="btn-lg text-white">Book Now</Button>
+          </Link>
+        </Col>
+      </Row>
+      <Row className="bg-light mt-5">
+        <Col className="text-center p-5">
+          <p className="h4">Do you have questions?</p>
+          <p className="text-muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor.
+          </p>
+          <Link to="/contact" className="d-block">
+            <Button className="btn-lg" variant="outline-secondary">
+              Get in Touch
+            </Button>
+          </Link>
+        </Col>
+      </Row>
+      <Row className="bg-light mt-5 p-2">
+        <PopularObjects />
+      </Row>
+    </>
   );
 }

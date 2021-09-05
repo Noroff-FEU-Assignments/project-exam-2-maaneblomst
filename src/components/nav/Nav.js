@@ -8,7 +8,7 @@ import logo from "../../images/logos/brand_logo.png";
 
 function Navigation() {
   return (
-    <Navbar bg="white" expand="lg" className="mb-5">
+    <Navbar bg="white" expand="lg" className="mb-4">
       <Container>
         <Link to="/">
           <Navbar.Brand>

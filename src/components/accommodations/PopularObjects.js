@@ -4,6 +4,7 @@ import { BASE_URL } from "../../constants/Api";
 import Container from "react-bootstrap/Container";
 import ItemCard from "../cards/Cards";
 import Row from "react-bootstrap/Row";
+import Heading from "../common/Heading";
 
 export function PopularObjects() {
   const [accommodations, setAccommodations] = useState([]);
@@ -37,7 +38,8 @@ export function PopularObjects() {
 
   return (
     <Container className="popularObjects">
-      <Row>
+      <Row className="bg-light p-2">
+        <Heading size="3" content="Popular Bookings &#128293;" />
         {filtered.map((popObject) => (
           <ItemCard
             key={popObject.id}

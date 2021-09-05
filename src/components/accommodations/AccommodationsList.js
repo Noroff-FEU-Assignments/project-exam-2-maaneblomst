@@ -33,10 +33,11 @@ export function AccommodationsList() {
   if (error) return <div>Error loading accommodations</div>;
 
   return (
-    <Container className="popularObjects">
+    <Container>
       <Row>
         {accommodations.map((object) => (
           <ItemCard
+            className="p-4"
             key={object.id}
             id={object.id}
             name={object.name}

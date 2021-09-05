@@ -5,6 +5,8 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { BoxArrowRight, Speedometer } from "react-bootstrap-icons";
+import { Key } from "react-bootstrap-icons";
 
 function SecondaryNav() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -25,11 +27,11 @@ function SecondaryNav() {
                 to="/admin"
                 className="basic-nav-dropdown"
               >
-                Dashboard
+                <Speedometer></Speedometer>Dashboard
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <Button variant="link" onClick={logOut}>
-                <i className="fas fa-sign-out-alt"></i>Log out
+                <BoxArrowRight></BoxArrowRight>Log out
               </Button>
             </>
           ) : (
@@ -38,7 +40,7 @@ function SecondaryNav() {
               to="/login"
               className="basic-nav-dropdown"
             >
-              Login
+              <Key></Key>Login
             </NavDropdown.Item>
           )}
         </NavDropdown>

@@ -6,8 +6,8 @@ export default function ItemCard({ id, image, name, price }) {
   return (
     <Col xs={12} sm={10} md={8} lg={4} className="accommodation mt-4 p-0">
       <Link to={`/accommodations/${id}`}>
-        <Card className="rounded shadow">
-          <Card.Img variant="top" src={image} />
+        <Card className="w-75 m-3 rounded shadow">
+          <Card.Img src={image} />
           <Card.Body>
             <Card.Title>{name}</Card.Title>
             <Card.Subtitle>{price}</Card.Subtitle>
