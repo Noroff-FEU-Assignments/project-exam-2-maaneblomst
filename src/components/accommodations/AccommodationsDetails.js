@@ -26,6 +26,7 @@ export default function AccommodationsDetails() {
       try {
         const response = await axios.get(url);
         setAccommodation(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
         setLoadError(error.toString());
@@ -42,21 +43,25 @@ export default function AccommodationsDetails() {
   if (loadError) return <div>Error loading</div>;
 
   const name = accommodation.name;
+  const accId = accommodation.id;
   const desc = accommodation.description;
   const price = accommodation.price;
   const image = accommodation.images[0].url;
+  const facilities = accommodation.facilities;
 
   return (
-    <>
+    <Container key={accId}>
       <Image fluid src={image} />
-      <Row>
+      <Row className="p-4 mb-2">
         <Col>
           <h1>{name}</h1>
         </Col>
         <Col>
-          <span>
+          <span className="ml-1 mr-1">
             FROM
-            <span className="text-primary font-weight-bold h4">{price}</span>
+            <span className="text-primary font-weight-bold h4 p-2">
+              {price}
+            </span>
             NOK
           </span>
           <Link to="/enquiries" className="d-block">
@@ -69,14 +74,18 @@ export default function AccommodationsDetails() {
           <Heading size="4" content="Description" />
           <p>{desc}</p>
           <Heading size="4" content="Facilities" />
-          <p>Facilities goes here</p>
+          {facilities.map((facility) => (
+            <div>{facility.facility_name}</div>
+          ))}
         </Col>
       </Row>
-      <Row>
+      <Row className="text-center">
         <Col>
-          <span>
+          <span className="ml-1 mr-1">
             FROM
-            <span className="text-primary font-weight-bold h4">{price}</span>
+            <span className="text-primary font-weight-bold h4 p-2">
+              {price}
+            </span>
             NOK
           </span>
           <Link to="/enquiries" className="d-block">
@@ -101,6 +110,6 @@ export default function AccommodationsDetails() {
       <Row className="bg-light mt-5 p-2">
         <PopularObjects />
       </Row>
-    </>
+    </Container>
   );
 }

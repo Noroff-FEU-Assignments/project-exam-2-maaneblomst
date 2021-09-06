@@ -43,6 +43,7 @@ export function AccommodationsList() {
             name={object.name}
             price={object.price}
             image={object.images[0].formats.small.url}
+            facilities={object.facilities}
           />
         ))}
       </Row>
