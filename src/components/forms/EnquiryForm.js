@@ -140,7 +140,7 @@ export default function EnquiryForm({ id, name }) {
         <Form.Group>
           <Form.Label>Arrival</Form.Label>
           <Form.Control
-            id="from_date"
+            id="date_from"
             type="date"
             {...register("date_from", { required: true })}
           ></Form.Control>
@@ -151,7 +151,7 @@ export default function EnquiryForm({ id, name }) {
         <Form.Group>
           <Form.Label>Check-out</Form.Label>
           <Form.Control
-            id="to_date"
+            id="date_to"
             type="date"
             {...register("date_to", { required: true })}
           ></Form.Control>

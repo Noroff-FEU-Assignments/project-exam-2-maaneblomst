@@ -7,40 +7,35 @@ import logo from "../../images/logos/brand_logo_dark.png";
 
 function FooterNav() {
   return (
-    <Navbar variant="dark" bg="dark" expand="lg" className="mt-2">
-      <Container>
-        <Navbar.Toggle aria-controls="basic-navbar" />
-        <Navbar.Collapse id="basic-navbar">
-          <Nav className="mx-auto">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-            <Link to="/accommodations" className="nav-link">
-              Accommodations
-            </Link>
-            <Link to="/">
-              <Navbar.Brand>
-                <Image
-                  src={logo}
-                  className="d-inline-block"
-                  width="150"
-                  alt="Holidaze logo"
-                />
-              </Navbar.Brand>
-            </Link>
-            <Link to="#" className="nav-link">
-              Bergen
-            </Link>
-            <Link to="#" className="nav-link">
-              About
-            </Link>
-            <Link to="/contact" className="nav-link">
-              Contact
-            </Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <>
+      <Nav className="justify-content-center bg-dark sticky-bottom p-4">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+        <Link to="/accommodations" className="nav-link">
+          Accommodations
+        </Link>
+        <Link to="/">
+          <Navbar.Brand>
+            <Image
+              src={logo}
+              className="d-inline-block"
+              width="150"
+              alt="Holidaze logo"
+            />
+          </Navbar.Brand>
+        </Link>
+        <Link to="#" className="nav-link">
+          Bergen
+        </Link>
+        <Link to="#" className="nav-link">
+          About
+        </Link>
+        <Link to="/contact" className="nav-link">
+          Contact
+        </Link>
+      </Nav>
+    </>
   );
 }
 

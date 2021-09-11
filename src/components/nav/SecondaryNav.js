@@ -27,11 +27,15 @@ function SecondaryNav() {
                 to="/admin"
                 className="basic-nav-dropdown"
               >
-                <Speedometer></Speedometer>Dashboard
+                <Speedometer></Speedometer> Dashboard
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <Button variant="link" onClick={logOut}>
-                <BoxArrowRight></BoxArrowRight>Log out
+              <Button
+                variant="link"
+                className="text-decoration-none"
+                onClick={logOut}
+              >
+                <BoxArrowRight></BoxArrowRight> Log out
               </Button>
             </>
           ) : (

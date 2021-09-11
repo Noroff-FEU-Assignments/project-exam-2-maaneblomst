@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 
 function Contact() {
   return (
-    <Container>
+    <Container className="content-wrapper">
       <Heading size="1" content="Contact" />
       <ContactForm />
     </Container>

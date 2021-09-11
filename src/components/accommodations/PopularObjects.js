@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../constants/Api";
 import Container from "react-bootstrap/Container";
-import ItemCard from "../cards/Cards";
+import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
 import Row from "react-bootstrap/Row";
 import Heading from "../common/Heading";
 
@@ -28,7 +28,12 @@ export function PopularObjects() {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <span>Loading accommodations...</span>;
+  if (loading)
+    return (
+      <Container>
+        <PlaceholderCard />
+      </Container>
+    );
 
   if (error) return <div>Error loading accommodations</div>;
 

@@ -3,11 +3,12 @@ import { AccommodationsList } from "../../components/accommodations/Accommodatio
 import { PopularObjects } from "../../components/accommodations/PopularObjects";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 function Accommodations() {
   return (
-    <>
+    <Container className="content-wrapper">
       <Heading size="1" content="Accommodations" />
       <AccommodationsList />
       <Row className="bg-light mt-5">
@@ -27,7 +28,7 @@ function Accommodations() {
       <Row className="bg-light">
         <PopularObjects />
       </Row>
-    </>
+    </Container>
   );
 }
 

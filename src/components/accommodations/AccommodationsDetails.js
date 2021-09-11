@@ -46,12 +46,16 @@ export default function AccommodationsDetails() {
   const accId = accommodation.id;
   const desc = accommodation.description;
   const price = accommodation.price;
-  const image = accommodation.images[0].url;
+  const image = accommodation.images[0].formats.small.url;
   const facilities = accommodation.facilities;
 
   return (
-    <Container key={accId}>
-      <Image fluid src={image} />
+    <Container className="content-wrapper" key={accId}>
+      <Row>
+        <Col>
+          <Image fluid className="d-block mx-auto" src={image} />
+        </Col>
+      </Row>
       <Row className="p-4 mb-2">
         <Col>
           <h1>{name}</h1>

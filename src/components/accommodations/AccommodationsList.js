@@ -3,7 +3,7 @@ import axios from "axios";
 import { BASE_URL } from "../../constants/Api";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import ItemCard from "../cards/Cards";
+import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
 
 export function AccommodationsList() {
   const [accommodations, setAccommodations] = useState([]);
@@ -28,7 +28,12 @@ export function AccommodationsList() {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <span>Loading accommodations...</span>;
+  if (loading)
+    return (
+      <Container>
+        <PlaceholderCard />
+      </Container>
+    );
 
   if (error) return <div>Error loading accommodations</div>;
 
