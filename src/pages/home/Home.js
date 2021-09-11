@@ -4,7 +4,6 @@ import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import IconGroup from "../../components/common/IconGroup";
-import { DistributeVertical } from "react-bootstrap-icons";
 
 function Home() {
   return (
