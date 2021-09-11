@@ -9,8 +9,8 @@ import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Heading from "../common/Heading";
+import EnquiryModal from "../modals/EnquiryModal";
 import { PopularObjects } from "./PopularObjects";
-import { EmojiHeartEyes } from "react-bootstrap-icons";
 
 export default function AccommodationsDetails() {
   const [accommodation, setAccommodation] = useState(null);
@@ -57,16 +57,20 @@ export default function AccommodationsDetails() {
           <h1>{name}</h1>
         </Col>
         <Col>
-          <span className="ml-1 mr-1">
+          <span className="ml-2 p-3 mr-2">
             FROM
             <span className="text-primary font-weight-bold h4 p-2">
               {price}
             </span>
             NOK
           </span>
-          <Link to="/enquiries" className="d-block">
-            <Button className="btn-lg text-white">Book Now</Button>
-          </Link>
+          <EnquiryModal
+            id={accId}
+            name={name}
+            price={price}
+            image={image}
+            facilities={facilities}
+          />
         </Col>
       </Row>
       <Row>
@@ -75,22 +79,26 @@ export default function AccommodationsDetails() {
           <p>{desc}</p>
           <Heading size="4" content="Facilities" />
           {facilities.map((facility) => (
-            <div>{facility.facility_name}</div>
+            <div key={facility.id}>{facility.facility_name}</div>
           ))}
         </Col>
       </Row>
       <Row className="text-center">
         <Col>
-          <span className="ml-1 mr-1">
+          <span className="ml-2 p-3 mr-2">
             FROM
             <span className="text-primary font-weight-bold h4 p-2">
               {price}
             </span>
             NOK
           </span>
-          <Link to="/enquiries" className="d-block">
-            <Button className="btn-lg text-white">Book Now</Button>
-          </Link>
+          <EnquiryModal
+            id={accId}
+            name={name}
+            price={price}
+            image={image}
+            facilities={facilities}
+          />
         </Col>
       </Row>
       <Row className="bg-light mt-5">

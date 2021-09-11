@@ -32,7 +32,7 @@ export default function ItemCard({ id, image, name, price, facilities }) {
               </span>
               NOK
             </span>
-            <div>{facilitiesToRender}</div>
+            <div key={id.facilitiesToRender}>{facilitiesToRender}</div>
           </Card.Body>
         </Card>
       </Link>

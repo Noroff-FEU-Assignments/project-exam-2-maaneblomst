@@ -16,6 +16,7 @@ export function EnquiriesList() {
       try {
         const response = await http.get(url);
         setEnquiries(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
         setError(error.toString());
@@ -41,7 +42,8 @@ export function EnquiriesList() {
         const name = request.name;
         const id = request.id;
         const email = request.email;
-        const date = request.date;
+        const dateFrom = request.date_from;
+        const dateTo = request.date_to;
         const accommodation = request.accommodation;
         const message = request.message;
 
@@ -49,7 +51,8 @@ export function EnquiriesList() {
           <ul key={id}>
             <li>Name:{name}</li>
             <li>E-mail:{email}</li>
-            <li>Date: {date}</li>
+            <li>Date from: {dateFrom}</li>
+            <li>Date to: {dateTo}</li>
             <li>Accommodation: {accommodation}</li>
             <li>Message: {message}</li>
           </ul>

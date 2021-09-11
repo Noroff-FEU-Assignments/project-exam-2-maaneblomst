@@ -9,6 +9,7 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import { EmojiSmile } from "react-bootstrap-icons";
 
 const url = BASE_URL + "enquiries";
 
@@ -25,11 +26,12 @@ const schema = yup.object().shape({
     .string()
     .required("Please enter your desired accommodation")
     .min(5, "Your accommodation must have at least 5 characters"),
-  date: yup.date().required("Please enter your booking date"),
-  message: yup.string().min(10, "Your message must be at least 10 characters"),
+  from_date: yup.date(),
+  to_date: yup.date(),
+  message: yup.string(),
 });
 
-export default function EnquiryForm() {
+export default function EnquiryForm({ id, name }) {
   const [submit, setSubmit] = useState(false);
   const [sumbissionError, setSubmissionError] = useState(null);
 
@@ -44,14 +46,17 @@ export default function EnquiryForm() {
       name: "John Wayne",
       email: "hello@waynesworld.com",
       accommodation: "Lorem Ipsum Cabin",
-      date: "2021-09-31",
+      date_from: JSON.stringify(new Date()),
+      date_to: JSON.stringify(new Date()),
       message: "Hello you silly you",
     },
     headers: {
       "Content-Type": "application/json",
     },
   };
+
   async function onSubmit(options, e) {
+    console.log(document.getElementById("from_date").value);
     try {
       const response = await axios.post(url, options);
       setSubmit(true);
@@ -63,23 +68,24 @@ export default function EnquiryForm() {
     } finally {
     }
   }
+
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} className="mt-5">
+    <Form onSubmit={handleSubmit(onSubmit)} className="mt-1">
       {submit && (
         <DisplayAlert variant="success">
-          Thank you! Your form has been submitted.
+          Thank you! Your form has been submitted. <EmojiSmile />
         </DisplayAlert>
       )}
       <Form.Row>
-        <Form.Group as={Col} controlId="formFirstName" className="d-sm-block">
-          <Form.Label>First Name</Form.Label>
+        <Form.Group as={Col} controlId="formName" className="d-sm-block">
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="name"
             placeholder="Your first and last name"
             {...register("name", { required: true })}
           />
-          {errors.firstName && (
-            <FormError variant="warning">{errors.firstName.message}</FormError>
+          {errors.name && (
+            <FormError variant="warning">{errors.name.message}</FormError>
           )}
         </Form.Group>
       </Form.Row>
@@ -101,21 +107,56 @@ export default function EnquiryForm() {
         </Form.Group>
       </Form.Row>
       <Form.Row>
-        <Form.Group
-          as={Col}
-          controlId="formAccommodation"
-          className="d-sm-block"
-        >
-          <Form.Label>Your Accommodation</Form.Label>
+        <Form.Label>Your Chosen Accommodation</Form.Label>
+        {id ? (
+          <>
+            <Form.Control
+              type="text"
+              value={name}
+              readOnly
+              {...register("accommodation", { required: true })}
+            />
+          </>
+        ) : (
+          <Form.Group
+            as={Col}
+            controlId="formAccommodation"
+            className="d-sm-block"
+          >
+            <Form.Control
+              type="name"
+              placeholder="Please enter your desired accommodation"
+              {...register("accommodation", { required: true })}
+            />
+            {errors.accommodation && (
+              <FormError variant="warning">
+                {errors.accommodation.message}
+              </FormError>
+            )}
+          </Form.Group>
+        )}
+      </Form.Row>
+      <Form.Row>
+        <Form.Group>
+          <Form.Label>Arrival</Form.Label>
           <Form.Control
-            type="name"
-            placeholder="Please enter your desired accommodation"
-            {...register("accommodation", { required: true })}
-          />
-          {errors.accommodation && (
-            <FormError variant="warning">
-              {errors.accommodation.message}
-            </FormError>
+            id="from_date"
+            type="date"
+            {...register("date_from", { required: true })}
+          ></Form.Control>
+          {errors.fromDate && (
+            <FormError variant="warning">{errors.fromDate.message}</FormError>
+          )}
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Check-out</Form.Label>
+          <Form.Control
+            id="to_date"
+            type="date"
+            {...register("date_to", { required: true })}
+          ></Form.Control>
+          {errors.toDate && (
+            <FormError variant="warning">{errors.toDate.message}</FormError>
           )}
         </Form.Group>
       </Form.Row>
