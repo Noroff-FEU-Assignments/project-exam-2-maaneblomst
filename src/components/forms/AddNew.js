@@ -2,14 +2,16 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../constants/Api";
 import useAxios from "../hooks/useAxios";
-import DisplayAlert from "../common/DisplayAlert";
-import FormError from "../common/FormError";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import DisplayAlert from "../common/DisplayAlert";
+import FormError from "../common/FormError";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { EmojiSmile } from "react-bootstrap-icons";
+
+// Sett inn reset på popular-checkbox!
 
 const url = BASE_URL + "accommodations";
 
@@ -21,7 +23,7 @@ const schema = yup.object().shape({
   description: yup
     .string()
     .required("Please add a description")
-    .min(5, "Please enter a description of at least 20 words"),
+    .min(5, "Please enter a description of at least 5 words"),
   price: yup
     .number()
     .positive("Must be more than 0")
@@ -32,6 +34,8 @@ const schema = yup.object().shape({
 export default function AddForm() {
   const [submit, setSubmit] = useState(false);
   const [sumbissionError, setSubmissionError] = useState(null);
+  const [checked, setChecked] = useState(false);
+  const [images, setImages] = useState([]);
 
   const http = useAxios();
 
@@ -46,21 +50,23 @@ export default function AddForm() {
       name: "Lorem Ipsum Cabin",
       description: "Lorem ipsum dolor description",
       price: "140.00",
-      popular: false,
+      popular: null,
     },
     headers: {
       "Content-Type": "application/json",
     },
   };
-  async function onSubmit(options, e) {
+
+  async function onSubmit(options) {
     try {
       const response = await http.post(url, options);
       setSubmit(true);
       console.log(response.data);
-      e.target.reset(); // reset after form submit
+      console.log("this is a ppopular product" + checked);
     } catch (error) {
       setSubmissionError(true);
       console.log(error);
+      console.log(sumbissionError);
     } finally {
     }
   }
@@ -121,16 +127,22 @@ export default function AddForm() {
       <Form.Group controlId="formPopular">
         <Form.Check
           type="switch"
-          id="custom-switch"
-          value="false"
+          id="popular"
           label="Popular"
+          defaultChecked={false}
+          onChange={() => setChecked(true)}
           {...register("popular", { required: true })}
         ></Form.Check>
         {errors.popular && (
           <FormError variant="warning">{errors.popular.message}</FormError>
         )}
       </Form.Group>
-
+      <Form.Group controlId="formFileMultiple" className="mb-3">
+        <Form.File name="images" label="Add image" />
+        {errors.images && (
+          <FormError variant="warning">{errors.images.message}</FormError>
+        )}
+      </Form.Group>
       <Button variant="primary" type="submit">
         Submit
       </Button>
