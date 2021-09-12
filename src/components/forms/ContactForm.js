@@ -69,7 +69,7 @@ export default function ContactForm() {
       )}
       <Form.Row>
         <Form.Group as={Col} controlId="formFirstName" className="d-sm-block">
-          <Form.Label>First Name</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="name"
             placeholder="Your first and last name"

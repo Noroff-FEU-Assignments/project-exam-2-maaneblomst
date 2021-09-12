@@ -13,6 +13,7 @@ function Admin() {
   let calendar = <Calendar size={40} />;
   let folder = <Folder size={40} />;
   let folderPlus = <FolderPlus size={40} />;
+
   return (
     <Container className="content-wrapper">
       <Heading size="1" content="Dashboard" />

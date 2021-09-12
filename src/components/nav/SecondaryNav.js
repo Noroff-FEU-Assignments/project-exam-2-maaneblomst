@@ -5,8 +5,12 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { BoxArrowRight, Speedometer } from "react-bootstrap-icons";
-import { Key } from "react-bootstrap-icons";
+import {
+  BoxArrowRight,
+  Speedometer,
+  Key,
+  PersonCircle,
+} from "react-bootstrap-icons";
 
 function SecondaryNav() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -18,6 +22,7 @@ function SecondaryNav() {
   }
   return (
     <Nav className="mr-auto">
+      <PersonCircle size={20} className="text-primary mt-2" />
       <Container>
         <NavDropdown title="My Account" id="basic-nav-dropdown">
           {auth ? (

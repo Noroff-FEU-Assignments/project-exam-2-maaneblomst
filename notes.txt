@@ -1,0 +1,207 @@
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { BASE_URL } from "../../constants/Api";
+import useAxios from "../hooks/useAxios";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import DisplayAlert from "../common/DisplayAlert";
+import FormError from "../common/FormError";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { EmojiSmile } from "react-bootstrap-icons";
+
+// Sett inn reset på popular-checkbox!
+
+const url = BASE_URL + "accommodations";
+
+const schema = yup.object().shape({
+  name: yup
+    .string()
+    .required("Please enter your first name")
+    .min(1, "Your name must be at least 2 characters."),
+  description: yup
+    .string()
+    .required("Please add a description")
+    .min(5, "Please enter a description of at least 5 words"),
+  price: yup
+    .number()
+    .positive("Must be more than 0")
+    .required("This field is required"),
+  popular: yup.boolean().oneOf([true, false]),
+  images: yup.mixed(),
+});
+
+export default function AddForm() {
+  const formData = new FormData();
+  const [submit, setSubmit] = useState(false);
+  const [sumbissionError, setSubmissionError] = useState(null);
+  const [checked, setChecked] = useState(false);
+  const [image, setImage] = useState([]);
+
+  const http = useAxios();
+
+  const handleInputChange = (e) => {
+    console.log("bilde", e.target.files[0]);
+    setImage(e.target.files[0]);
+    e.persist();
+    formData.append("images", image);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const options = {
+    body: {
+      name: "Lorem Ipsum Cabin",
+      description: "Lorem ipsum dolor description",
+      price: "140.00",
+      popular: null,
+    },
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  async function onSubmit(options) {
+    try {
+      const response = await http.post(url, options, formData);
+      setSubmit(true);
+      console.log(response.data);
+      console.log(checked);
+    } catch (error) {
+      setSubmissionError(true);
+      console.log(error);
+      console.log(sumbissionError);
+    } finally {
+    }
+  }
+  return (
+    <Form onSubmit={handleSubmit(onSubmit)} className="mt-5">
+      {submit && (
+        <DisplayAlert variant="success">
+          <EmojiSmile className="d-block"></EmojiSmile>
+          Great! Your new accommodation has been added
+        </DisplayAlert>
+      )}
+      <Form.Row>
+        <Form.Group as={Col} controlId="formName" className="d-sm-block">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="name"
+            placeholder="Enter the name of the accommodation"
+            {...register("name", { required: true })}
+          />
+          {errors.name && (
+            <FormError variant="warning">{errors.name.message}</FormError>
+          )}
+        </Form.Group>
+      </Form.Row>
+      <Form.Row>
+        <Form.Group as={Col} controlId="formDescription">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            type="textarea"
+            placeholder="Enter a description"
+            style={{ height: "100px" }}
+            {...register("description", { required: true })}
+          />
+          {errors.description && (
+            <FormError variant="warning">
+              {errors.description.message}
+            </FormError>
+          )}
+        </Form.Group>
+      </Form.Row>
+      <Form.Row>
+        <Form.Group
+          as={Col}
+          controlId="formAccommodation"
+          className="d-sm-block"
+        >
+          <Form.Label>Price</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="0.00"
+            {...register("price", { required: true })}
+          />
+          {errors.price && (
+            <FormError variant="warning">{errors.price.message}</FormError>
+          )}
+        </Form.Group>
+      </Form.Row>
+      <Form.Group controlId="formPopular">
+        <Form.Check
+          type="switch"
+          id="popular"
+          label="Popular"
+          defaultChecked={false}
+          onChange={() => setChecked(true)}
+          {...register("popular", { required: true })}
+        ></Form.Check>
+        {errors.popular && (
+          <FormError variant="warning">{errors.popular.message}</FormError>
+        )}
+      </Form.Group>
+      <Form.Group controlId="formFileMultiple" className="mb-3">
+        <Form.File
+          name="image"
+          label="Add image"
+          onChange={handleInputChange}
+          //{...register("images")}
+        />
+        {errors.images && (
+          <FormError variant="warning">{errors.images.message}</FormError>
+        )}
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+  );
+}
+
+VIDEO TUTORIAL:
+
+export class FileUpload extends React.Component {
+  state = {
+    file: null,
+  };
+
+  handleChange = (event) => {
+    console.log(
+      "fileUpload.handleChange event.target.files" + event.target.files
+    );
+    this.setState({ file: event.target.files[0] });
+  };
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("fileupload.handleSubmit this.state.file", this.state.file);
+
+    const data = new FormData();
+    data.append("files", this.state.file);
+
+    const uploadRes = await axios({
+      method: "POST",
+      url: BASE_URL + "/upload",
+      data,
+    });
+
+    console.log("fileUpload.handleSubmit uploadRes", uploadRes);
+  };
+  render() {
+    return (
+      <div className="fileUpload">
+        <div className="text-center d-block">
+          <Form onSubmit={this.handleSubmit}>
+            <input onChange={this.handleChange} type="file" />
+            <button>Submit</button>
+          </Form>
+        </div>
+      </div>
+    );
+  }
+}

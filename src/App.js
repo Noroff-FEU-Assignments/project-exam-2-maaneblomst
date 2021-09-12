@@ -1,11 +1,13 @@
 import Routes from "./components/nav/Routes";
 import { AuthProvider } from "./components/context/AuthContext";
+import ContactModal from "./components/modals/ContactModal";
 import "./sass/custom.scss";
 
 function App() {
   return (
     <AuthProvider>
       <Routes />
+      <ContactModal />
     </AuthProvider>
   );
 }

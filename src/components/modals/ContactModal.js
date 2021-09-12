@@ -1,10 +1,15 @@
+import {
+  Container,
+  Button,
+  lightColors,
+  darkColors,
+} from "react-floating-action-button";
+import { Envelope } from "react-bootstrap-icons";
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import { Button } from "react-floating-action-button";
-import Image from "react-bootstrap/Image";
-import EnquiryForm from "../forms/EnquiryForm";
+import ContactForm from "../forms/ContactForm";
 
-export default function EnquiryModal({ id, name }) {
+export default function ContactModal() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -12,21 +17,23 @@ export default function EnquiryModal({ id, name }) {
 
   return (
     <>
-      <Button
-        tooltip="Contact us"
-        rotate={true}
-        onClick={handleShow}
-        className="bg-primary"
-      >
-        Book
-      </Button>
+      <Container>
+        <Button
+          tooltip="Contact us"
+          rotate={true}
+          onClick={handleShow}
+          className="bg-primary"
+        >
+          <Envelope size={30} />
+        </Button>
+      </Container>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Book your next stay at {name} </Modal.Title>
+          <Modal.Title>Contact us</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EnquiryForm id={id} name={name} />
+          <ContactForm />
         </Modal.Body>
         <Modal.Footer>
           <Button className="bg-light text-dark" onClick={handleClose}>
