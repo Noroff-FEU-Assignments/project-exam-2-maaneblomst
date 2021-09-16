@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useAxios from "../hooks/useAxios";
+import { useHistory } from "react-router-dom";
 import { BASE_URL } from "../../constants/Api";
 import Container from "react-bootstrap/Container";
 import { Button, darkColors, lightColors } from "react-floating-action-button";
@@ -10,16 +11,23 @@ export function DeleteMessage({ id }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const url = BASE_URL + "messages" + "/" + id;
+
   const http = useAxios();
+  const history = useHistory();
+  const url = BASE_URL + "messages" + "/" + id;
 
-  function deleteItem() {
-    console.log("delete item " + id);
+  async function handleDelete() {
+    console.log("request sending");
+    try {
+      await http.delete(url);
+      console.log("deleted id " + id);
+      history.push("/messages");
+      setShow(false);
+    } catch (error) {
+      setError(error);
+    }
   }
-
   return (
     <Container>
       <Button
@@ -43,9 +51,9 @@ export function DeleteMessage({ id }) {
                 backgroundColor: darkColors.green,
                 color: lightColors.white,
               }}
-              onClick={deleteItem}
+              onClick={handleDelete}
             >
-              Yes
+              {error ? "Error" : "Yes"}
             </Button>
           </Container>
         </Modal.Body>

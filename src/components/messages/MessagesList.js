@@ -3,6 +3,7 @@ import useAxios from "../hooks/useAxios";
 import { BASE_URL } from "../../constants/Api";
 import Container from "react-bootstrap/Container";
 import { DeleteMessage } from "./deleteMessage";
+import { Link } from "react-router-dom";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import moment from "moment";
 
@@ -67,6 +68,9 @@ export function MessagesList() {
               <span className="fw-bold">Message: </span>
               {message}
               <DeleteMessage id={id} />
+              <Link to={{ pathname: "mailto:" + email }} target="_blank">
+                Reply
+              </Link>
             </Container>
           </ListGroupItem>
         );
