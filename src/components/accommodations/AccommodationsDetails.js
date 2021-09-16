@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Heading from "../common/Heading";
 import EnquiryModal from "../modals/EnquiryModal";
 import { PopularObjects } from "./PopularObjects";
+import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
 
 export default function AccommodationsDetails() {
   const [accommodation, setAccommodation] = useState(null);
@@ -46,7 +47,10 @@ export default function AccommodationsDetails() {
   const accId = accommodation.id;
   const desc = accommodation.description;
   const price = accommodation.price;
-  const image = accommodation.images[0].formats.small.url;
+  const image =
+    accommodation.images[0] == null
+      ? PlaceholderImage
+      : accommodation.images[0].formats.small.url;
   const facilities = accommodation.facilities;
 
   return (

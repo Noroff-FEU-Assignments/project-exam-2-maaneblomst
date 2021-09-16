@@ -4,6 +4,7 @@ import { BASE_URL } from "../../constants/Api";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
+import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
 
 export function AccommodationsList() {
   const [accommodations, setAccommodations] = useState([]);
@@ -47,7 +48,11 @@ export function AccommodationsList() {
             id={object.id}
             name={object.name}
             price={object.price}
-            image={object.images[0].formats.small.url}
+            image={
+              object.images[0] == null
+                ? PlaceholderImage
+                : object.images[0].formats.small.url
+            }
             facilities={object.facilities}
           />
         ))}
