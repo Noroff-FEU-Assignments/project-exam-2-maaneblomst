@@ -5,9 +5,9 @@ import axios from "axios";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Carousel from "react-bootstrap/Carousel";
 import Heading from "../common/Heading";
 import EnquiryModal from "../modals/EnquiryModal";
 import { PopularObjects } from "./PopularObjects";
@@ -47,7 +47,7 @@ export default function AccommodationsDetails() {
   const accId = accommodation.id;
   const desc = accommodation.description;
   const price = accommodation.price;
-  const image =
+  const images =
     accommodation.images[0] == null
       ? PlaceholderImage
       : accommodation.images[0].url;
@@ -56,9 +56,20 @@ export default function AccommodationsDetails() {
   return (
     <Container className="content-wrapper" key={accId}>
       <Row>
-        <Col>
-          <Image fluid className="d-block mx-auto" src={image} />
-        </Col>
+        <Carousel>
+          {accommodation.images.map((image) => (
+            <Carousel.Item key={image.name}>
+              <img
+                className="d-block w-100"
+                src={image.url}
+                alt={image.alternativeText}
+              />
+              <Carousel.Caption>
+                <p>{image.caption}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </Row>
       <Row className="p-4 mb-2">
         <Col>
@@ -76,7 +87,7 @@ export default function AccommodationsDetails() {
             id={accId}
             name={name}
             price={price}
-            image={image}
+            images={images}
             facilities={facilities}
           />
         </Col>
@@ -104,7 +115,7 @@ export default function AccommodationsDetails() {
             id={accId}
             name={name}
             price={price}
-            image={image}
+            images={images}
             facilities={facilities}
           />
         </Col>
