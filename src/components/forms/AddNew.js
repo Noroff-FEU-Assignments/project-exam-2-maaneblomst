@@ -30,6 +30,7 @@ const schema = yup.object().shape({
     .required("This field is required"),
   popular: yup.boolean().oneOf([true, false]),
   images: yup.mixed(),
+  facilities: yup.string(),
 });
 
 export default function AddNew() {
@@ -131,7 +132,6 @@ export default function AddNew() {
       </Form.Row>
       <Form.Group controlId="formPopular">
         <Form.Check
-          type="switch"
           id="popular"
           label="Popular"
           defaultChecked={false}
