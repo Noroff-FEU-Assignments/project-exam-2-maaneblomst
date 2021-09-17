@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import logo from "../../images/logos/brand_logo_dark.png";
 

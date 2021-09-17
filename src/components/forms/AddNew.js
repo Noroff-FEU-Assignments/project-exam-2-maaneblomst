@@ -29,15 +29,16 @@ const schema = yup.object().shape({
     .positive("Must be more than 0")
     .required("This field is required"),
   popular: yup.boolean().oneOf([true, false]),
+  images: yup.mixed(),
 });
 
-export default function AddForm() {
+export default function AddNew() {
   const [submit, setSubmit] = useState(false);
   const [sumbissionError, setSubmissionError] = useState(null);
   const [checked, setChecked] = useState(false);
-  const [images, setImages] = useState([]);
 
   const http = useAxios();
+  const formData = new FormData();
 
   const {
     register,
@@ -45,24 +46,28 @@ export default function AddForm() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const options = {
-    body: {
-      name: "Lorem Ipsum Cabin",
-      description: "Lorem ipsum dolor description",
-      price: "140.00",
-      popular: null,
-    },
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+  async function onSubmit(data) {
+    const { name, popular, price, description, files } = data;
+    const uploadFiles = Array.from(files.images);
 
-  async function onSubmit(options) {
+    uploadFiles.forEach((image) =>
+      formData.append("files.images", image, image.name)
+    );
+
+    const body = {
+      name,
+      description,
+      price,
+      popular,
+    };
+
+    formData.append("data", JSON.stringify(body));
+    console.log(formData);
     try {
-      const response = await http.post(url, options);
+      const response = await http.post(url, formData);
       setSubmit(true);
       console.log(response.data);
-      console.log("this is a ppopular product" + checked);
+      console.log("this is a popular product" + checked);
     } catch (error) {
       setSubmissionError(true);
       console.log(error);
@@ -138,7 +143,7 @@ export default function AddForm() {
         )}
       </Form.Group>
       <Form.Group controlId="formFileMultiple" className="mb-3">
-        <Form.File name="images" label="Add image" />
+        <Form.File multiple name="images" {...register("files.images")} />
         {errors.images && (
           <FormError variant="warning">{errors.images.message}</FormError>
         )}

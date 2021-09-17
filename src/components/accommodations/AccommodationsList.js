@@ -49,9 +49,7 @@ export function AccommodationsList() {
             name={object.name}
             price={object.price}
             image={
-              object.images[0] == null
-                ? PlaceholderImage
-                : object.images[0].formats.small.url
+              object.images[0] == null ? PlaceholderImage : object.images[0].url
             }
             facilities={object.facilities}
           />

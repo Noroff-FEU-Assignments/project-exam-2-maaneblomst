@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
 import Row from "react-bootstrap/Row";
 import Heading from "../common/Heading";
+import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
 
 export function PopularObjects() {
   const [accommodations, setAccommodations] = useState([]);
@@ -51,7 +52,11 @@ export function PopularObjects() {
             id={popObject.id}
             name={popObject.name}
             price={popObject.price}
-            image={popObject.images[0].formats.small.url}
+            image={
+              popObject.images[0] == null
+                ? PlaceholderImage
+                : popObject.images[0].url
+            }
           />
         ))}
       </Row>

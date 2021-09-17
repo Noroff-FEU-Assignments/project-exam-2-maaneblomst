@@ -63,7 +63,6 @@ export function PlaceholderCard() {
         <Card
           style={{ width: "18rem" }}
           className="w-75 m-3 rounded shadow text-dark"
-          className="w-75 m-3 rounded shadow text-dark"
         >
           <Card.Img variant="top" src={PlaceholderImage} />
           <Card.Body className="mx-auto">
@@ -76,7 +75,6 @@ export function PlaceholderCard() {
       <Col xs={12} sm={10} md={8} lg={4} className="accommodation mt-4 p-0">
         <Card
           style={{ width: "18rem" }}
-          className="w-75 m-3 rounded shadow text-dark"
           className="w-75 m-3 rounded shadow text-dark"
         >
           <Card.Img variant="top" src={PlaceholderImage} />

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-floating-action-button";
-import Image from "react-bootstrap/Image";
 import EnquiryForm from "../forms/EnquiryForm";
 
 export default function EnquiryModal({ id, name }) {

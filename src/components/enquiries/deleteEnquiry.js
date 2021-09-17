@@ -15,7 +15,7 @@ export function DeleteEnquiry({ id }) {
 
   const http = useAxios();
   const history = useHistory();
-  const url = BASE_URL + "enquiries" + "/" + id;
+  const url = BASE_URL + "enquiries/" + id;
 
   async function handleDelete() {
     console.log("request sending");

@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import { DashboardCard } from "../../components/cards/admin/Cards";
 import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { Speedometer } from "react-bootstrap-icons";
 import { Envelope } from "react-bootstrap-icons";
 import { Calendar } from "react-bootstrap-icons";
 import { Folder, FolderPlus } from "react-bootstrap-icons";

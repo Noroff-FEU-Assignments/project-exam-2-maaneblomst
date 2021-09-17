@@ -1,9 +1,4 @@
-import {
-  Container,
-  Button,
-  lightColors,
-  darkColors,
-} from "react-floating-action-button";
+import { Container, Button } from "react-floating-action-button";
 import { Envelope } from "react-bootstrap-icons";
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
@@ -29,7 +24,7 @@ export default function ContactModal() {
       </Container>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Contact us</Modal.Title>
         </Modal.Header>
         <Modal.Body>

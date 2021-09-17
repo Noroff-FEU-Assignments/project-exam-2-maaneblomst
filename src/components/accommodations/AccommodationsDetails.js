@@ -50,7 +50,7 @@ export default function AccommodationsDetails() {
   const image =
     accommodation.images[0] == null
       ? PlaceholderImage
-      : accommodation.images[0].formats.small.url;
+      : accommodation.images[0].url;
   const facilities = accommodation.facilities;
 
   return (

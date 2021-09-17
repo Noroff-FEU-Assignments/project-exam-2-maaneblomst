@@ -15,7 +15,7 @@ export function DeleteMessage({ id }) {
 
   const http = useAxios();
   const history = useHistory();
-  const url = BASE_URL + "messages" + "/" + id;
+  const url = BASE_URL + "messages/" + id;
 
   async function handleDelete() {
     console.log("request sending");
