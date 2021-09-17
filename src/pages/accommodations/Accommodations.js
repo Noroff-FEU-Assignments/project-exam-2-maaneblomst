@@ -6,12 +6,19 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 function Accommodations() {
   return (
     <>
       <Container className="content-wrapper">
         <Heading size="1" content="Accommodations" />
+        <Breadcrumb>
+          <Breadcrumb.Item>
+            <Link to="/">Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item active>Accommodations</Breadcrumb.Item>
+        </Breadcrumb>
         <AccommodationsList />
         <Row className="bg-light mt-5">
           <Col className="text-center p-5">
