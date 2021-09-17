@@ -10,12 +10,8 @@ function AdminEnquiries() {
     <Container>
       <Heading size="1" content="Enquiries" />
       <Breadcrumb>
-        <Breadcrumb.Item>
-          <Link to="/">Home</Link>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <Link to="/admin">Dashboard</Link>
-        </Breadcrumb.Item>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="/admin">Dashboard</Breadcrumb.Item>
         <Breadcrumb.Item active>Enquiries</Breadcrumb.Item>
       </Breadcrumb>
       <ListGroup>

@@ -9,9 +9,7 @@ function Login() {
     <Container>
       <Heading size="1" content="Login" />
       <Breadcrumb>
-        <Breadcrumb.Item>
-          <Link to="/">Home</Link>
-        </Breadcrumb.Item>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item active>Login</Breadcrumb.Item>
       </Breadcrumb>
       <LoginForm />

@@ -14,9 +14,7 @@ function Accommodations() {
       <Container className="content-wrapper">
         <Heading size="1" content="Accommodations" />
         <Breadcrumb>
-          <Breadcrumb.Item>
-            <Link to="/">Home</Link>
-          </Breadcrumb.Item>
+          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
           <Breadcrumb.Item active>Accommodations</Breadcrumb.Item>
         </Breadcrumb>
         <AccommodationsList />

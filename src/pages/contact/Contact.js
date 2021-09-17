@@ -11,9 +11,7 @@ function Contact() {
       <Container className="content-wrapper">
         <Heading size="1" content="Contact" />
         <Breadcrumb>
-          <Breadcrumb.Item>
-            <Link to="/">Home</Link>
-          </Breadcrumb.Item>
+          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
           <Breadcrumb.Item active>Contact</Breadcrumb.Item>
         </Breadcrumb>
         <ContactForm />

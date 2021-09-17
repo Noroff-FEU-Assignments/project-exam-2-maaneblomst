@@ -18,9 +18,7 @@ function Admin() {
     <Container className="content-wrapper">
       <Heading size="1" content="Dashboard" />
       <Breadcrumb>
-        <Breadcrumb.Item>
-          <Link to="/">Home</Link>
-        </Breadcrumb.Item>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item active>Dashboard</Breadcrumb.Item>
       </Breadcrumb>
       <Row>
