@@ -31,7 +31,6 @@ function Admin() {
           icon={calendar}
         />
         <DashboardCard title="Accommodations" link="overview" icon={folder} />
-        <DashboardCard title="Add new" link="add" icon={folderPlus} />
       </Row>
     </Container>
   );

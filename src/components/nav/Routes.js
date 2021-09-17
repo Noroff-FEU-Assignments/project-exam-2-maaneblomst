@@ -4,7 +4,6 @@ import Accommodations from "../../pages/accommodations/Accommodations";
 import AccommodationsDetails from "../accommodations/AccommodationsDetails";
 import Admin from "../../pages/admin/Admin";
 import Messages from "../../pages/admin/Messages";
-import Add from "../../pages/admin/Add";
 import AdminEnquiries from "../../pages/admin/AdminEnquiries";
 import Enquiries from "../../pages/enquiries/Enquiries";
 import Overview from "../../pages/admin/Overview";
@@ -47,9 +46,6 @@ function Routes() {
           </Route>
           <Route exact path="/adminenquiries">
             <AdminEnquiries />
-          </Route>
-          <Route exact path="/Add">
-            <Add />
           </Route>
           <Route exact path="/overview">
             <Overview />

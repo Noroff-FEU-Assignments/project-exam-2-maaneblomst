@@ -2,9 +2,8 @@ import { AccommodationsList } from "../../components/accommodations/Accommodatio
 import { Link } from "react-router-dom";
 import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import { Plus } from "react-bootstrap-icons";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
+import AddModal from "../../components/modals/AddModal";
 
 function Overview() {
   return (
@@ -19,14 +18,10 @@ function Overview() {
         </Breadcrumb.Item>
         <Breadcrumb.Item active>Accommodations</Breadcrumb.Item>
       </Breadcrumb>
-      <AccommodationsList />
       <Container className="text-center">
-        <Link to="/add">
-          <Button className="btn-lg text-white">
-            <Plus></Plus>Add New Accommodation
-          </Button>
-        </Link>
+        <AddModal />
       </Container>
+      <AccommodationsList />
     </Container>
   );
 }
