@@ -8,7 +8,7 @@ import IconGroup from "../../components/common/IconGroup";
 function Home() {
   return (
     <>
-      <div className="hero-image">
+      <div className="hero-image-home">
         <Container className="hero-search">
           <Heading size="1" content="Book your next stay in Bergen" />
           <SearchBar />

@@ -60,7 +60,7 @@ function SearchBar() {
   };
 
   return (
-    <Container className="p-2" style={{ width: 400 }}>
+    <Container fluid className="p-2" style={{ width: 300 }}>
       <ReactSearchAutocomplete
         items={accommodations}
         onSearch={handleOnSearch}

@@ -22,9 +22,9 @@ export function ItemCard({ id, image, name, price, facilities }) {
     });
   }
   return (
-    <Col xs={12} sm={6} md={6} lg={4} className="accommodation mt-4 p-4">
+    <Col xs={12} sm={6} md={6} lg={4} className="accommodation mt-4">
       <Link to={`/accommodations/${id}`} className="text-decoration-none">
-        <Card className="w-100 m-3 rounded shadow text-dark">
+        <Card className="w-100 rounded shadow text-dark">
           <Card.Img src={image} />
           <Card.Body>
             <Card.Title>{name}</Card.Title>

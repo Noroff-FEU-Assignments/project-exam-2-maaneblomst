@@ -13,10 +13,6 @@ function Admin() {
   return (
     <Container className="content-wrapper">
       <Heading size="1" content="Dashboard" />
-      <Breadcrumb>
-        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-        <Breadcrumb.Item active>Dashboard</Breadcrumb.Item>
-      </Breadcrumb>
       <Row>
         <DashboardCard title="Messages" link="messages" icon={envelope} />
         <DashboardCard

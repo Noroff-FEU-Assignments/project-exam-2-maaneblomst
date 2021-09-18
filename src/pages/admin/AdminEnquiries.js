@@ -8,11 +8,6 @@ function AdminEnquiries() {
   return (
     <Container>
       <Heading size="1" content="Enquiries" />
-      <Breadcrumb>
-        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-        <Breadcrumb.Item href="/admin">Dashboard</Breadcrumb.Item>
-        <Breadcrumb.Item active>Enquiries</Breadcrumb.Item>
-      </Breadcrumb>
       <ListGroup>
         <EnquiriesList />
       </ListGroup>

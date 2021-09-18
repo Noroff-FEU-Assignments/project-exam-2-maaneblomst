@@ -10,11 +10,6 @@ function Messages() {
   return (
     <Container className="content-wrapper">
       <Heading size="1" content="Messages" />
-      <Breadcrumb>
-        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-        <Breadcrumb.Item href="/admin">Dashboard</Breadcrumb.Item>
-        <Breadcrumb.Item active>Messages</Breadcrumb.Item>
-      </Breadcrumb>
       <Row>
         <Col />
         <Col xs={12} sm={10} md={10} lg={10}>

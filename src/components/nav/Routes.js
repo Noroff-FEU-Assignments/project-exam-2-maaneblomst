@@ -9,14 +9,13 @@ import Bergen from "../../pages/bergen/Bergen";
 import Overview from "../../pages/admin/Overview";
 import Contact from "../../pages/contact/Contact";
 import Navigation from "../nav/Nav";
-import Container from "react-bootstrap/Container";
 import FooterNav from "./FooterNav";
 
 function Routes() {
   return (
     <Router>
       <Navigation />
-      <Container fluid>
+      <>
         <Switch>
           <Route exact path="/">
             <Home />
@@ -46,7 +45,7 @@ function Routes() {
             <Overview />
           </Route>
         </Switch>
-      </Container>
+      </>
       <FooterNav />
     </Router>
   );

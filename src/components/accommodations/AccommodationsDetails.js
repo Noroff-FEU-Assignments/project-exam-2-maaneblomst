@@ -94,12 +94,14 @@ export default function AccommodationsDetails() {
       </Row>
       <Row>
         <Col>
-          <Heading size="4" content="Description" />
-          <p>{desc}</p>
-          <Heading size="4" content="Facilities" />
-          {facilities.map((facility) => (
-            <div key={facility.id}>{facility.facility_name}</div>
-          ))}
+          <Container>
+            <Heading size="4" content="Description" />
+            <p>{desc}</p>
+            <Heading size="4" content="Facilities" />
+            {facilities.map((facility) => (
+              <div key={facility.id}>{facility.facility_name}</div>
+            ))}
+          </Container>
         </Col>
       </Row>
       <Row className="text-center">

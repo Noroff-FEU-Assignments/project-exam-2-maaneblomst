@@ -12094,13 +12094,27 @@ h1, .h1, h2, .h2, h3, .h3 {
   text-align: center;
 }
 
+#root {
+  width: 100%;
+}
+
+.container {
+  max-width: 100% !important;
+}
+
 .content-wrapper {
   min-height: 100vh;
   padding: 0;
   margin: 0 auto;
 }
 
-.hero-image {
+.hero-search {
+  text-align: center;
+  padding-top: 6em;
+  color: #fff;
+}
+
+.hero-image-home {
   background-image: url("../../images/home/bergen_home.jpg");
   height: 500px;
   background-attachment: fixed;
@@ -12109,8 +12123,34 @@ h1, .h1, h2, .h2, h3, .h3 {
   background-size: cover;
 }
 
-.hero-search {
-  text-align: center;
-  padding-top: 6em;
-  color: #fff;
+.hero-image-contact {
+  background-image: url("../../images/contact/hero_contact.jpg");
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+.hero-image-bergen {
+  background-image: url("../../images/bergen/hero_bergen.jpg");
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+}
+
+/* Increase/decrease the pixels if needed */
+/* For all devices with a screen size smaller than 1366px, the background-attachment property will be scroll instead of fixed */
+@media only screen and (max-device-width: 1366px) {
+  .hero-image-bergen,
+  .hero-image-contact,
+  .hero-image-home {
+    background-attachment: scroll;
+  }
 }
