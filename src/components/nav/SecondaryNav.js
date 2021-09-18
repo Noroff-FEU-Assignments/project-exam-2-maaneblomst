@@ -8,9 +8,9 @@ import Button from "react-bootstrap/Button";
 import {
   BoxArrowRight,
   Speedometer,
-  Key,
   PersonCircle,
 } from "react-bootstrap-icons";
+import LoginModal from "../modals/LoginModal";
 
 function SecondaryNav() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -44,13 +44,7 @@ function SecondaryNav() {
               </Button>
             </>
           ) : (
-            <NavDropdown.Item
-              as={Link}
-              to="/login"
-              className="basic-nav-dropdown"
-            >
-              <Key></Key>Login
-            </NavDropdown.Item>
+            <LoginModal />
           )}
         </NavDropdown>
       </Container>

@@ -2,7 +2,6 @@ import { EnquiriesList } from "../../components/enquiries/EnquiriesList";
 import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
-import { Link } from "react-router-dom";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 function AdminEnquiries() {

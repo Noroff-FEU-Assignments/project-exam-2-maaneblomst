@@ -1,5 +1,4 @@
 import { AccommodationsList } from "../../components/accommodations/AccommodationsList";
-import { Link } from "react-router-dom";
 import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
 import Breadcrumb from "react-bootstrap/Breadcrumb";

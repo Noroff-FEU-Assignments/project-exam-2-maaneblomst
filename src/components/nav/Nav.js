@@ -29,7 +29,7 @@ function Navigation() {
             <Link to="/accommodations" className="nav-link">
               Accommodations
             </Link>
-            <Link to="#" className="nav-link">
+            <Link to="/bergen" className="nav-link">
               Bergen
             </Link>
             <Link to="#" className="nav-link">

@@ -5,10 +5,9 @@ import AccommodationsDetails from "../accommodations/AccommodationsDetails";
 import Admin from "../../pages/admin/Admin";
 import Messages from "../../pages/admin/Messages";
 import AdminEnquiries from "../../pages/admin/AdminEnquiries";
-import Enquiries from "../../pages/enquiries/Enquiries";
+import Bergen from "../../pages/bergen/Bergen";
 import Overview from "../../pages/admin/Overview";
 import Favourites from "../../pages/favourites/Favourites";
-import Login from "../../pages/login/Login";
 import Contact from "../../pages/contact/Contact";
 import Navigation from "../nav/Nav";
 import Container from "react-bootstrap/Container";
@@ -29,14 +28,11 @@ function Routes() {
           <Route exact path="/accommodations/:id">
             <AccommodationsDetails />
           </Route>
-          <Route exact path="/enquiries">
-            <Enquiries />
+          <Route exact path="/Bergen">
+            <Bergen />
           </Route>
           <Route exact path="/contact">
             <Contact />
-          </Route>
-          <Route exact path="/login">
-            <Login />
           </Route>
           <Route exact path="/admin">
             <Admin />

@@ -33,13 +33,13 @@ export function DeleteMessage({ id }) {
       <Button
         tooltip="Delete message"
         rotate={true}
-        className="bg-primary"
+        className="bg-danger"
         onClick={handleShow}
       >
         <Trash />
       </Button>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Delete</Modal.Title>
         </Modal.Header>
         <Modal.Body>
