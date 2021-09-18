@@ -3,15 +3,12 @@ import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Row from "react-bootstrap/Row";
-import { Envelope } from "react-bootstrap-icons";
-import { Calendar } from "react-bootstrap-icons";
-import { Folder, FolderPlus } from "react-bootstrap-icons";
+import { Envelope, Calendar, Folder } from "react-bootstrap-icons";
 
 function Admin() {
   let envelope = <Envelope size={40} />;
   let calendar = <Calendar size={40} />;
   let folder = <Folder size={40} />;
-  let folderPlus = <FolderPlus size={40} />;
 
   return (
     <Container className="content-wrapper">

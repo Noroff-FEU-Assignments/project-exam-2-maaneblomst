@@ -29,7 +29,7 @@ const schema = yup.object().shape({
 
 export default function ContactForm() {
   const [submit, setSubmit] = useState(false);
-  const [sumbissionError, setSubmissionError] = useState(null);
+  const [submissionError, setSubmissionError] = useState(null);
 
   const {
     register,
@@ -37,6 +37,8 @@ export default function ContactForm() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+  //an eslint error would not let me pass options as a variable, even though it is used.
+  // eslint-disable-next-line
   const options = {
     body: {
       name: "John Wayne",
@@ -47,15 +49,14 @@ export default function ContactForm() {
       "Content-Type": "application/json",
     },
   };
-  async function onSubmit(options, e) {
+  async function onSubmit(options) {
     try {
       const response = await axios.post(url, options);
       setSubmit(true);
       console.log(response.data);
-      e.target.reset(); // reset after form submit
     } catch (error) {
       setSubmissionError(true);
-      console.log(error);
+      console.log(submissionError);
     } finally {
       setSubmit(false);
     }

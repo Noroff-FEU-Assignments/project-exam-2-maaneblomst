@@ -7,7 +7,6 @@ import Messages from "../../pages/admin/Messages";
 import AdminEnquiries from "../../pages/admin/AdminEnquiries";
 import Bergen from "../../pages/bergen/Bergen";
 import Overview from "../../pages/admin/Overview";
-import Favourites from "../../pages/favourites/Favourites";
 import Contact from "../../pages/contact/Contact";
 import Navigation from "../nav/Nav";
 import Container from "react-bootstrap/Container";
@@ -45,9 +44,6 @@ function Routes() {
           </Route>
           <Route exact path="/overview">
             <Overview />
-          </Route>
-          <Route exact path="/favourites">
-            <Favourites />
           </Route>
         </Switch>
       </Container>

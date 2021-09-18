@@ -7,8 +7,8 @@ import Container from "react-bootstrap/Container";
 
 function SearchBar() {
   const [accommodations, setAccommodations] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [, setLoading] = useState(true);
+  const [, setError] = useState(null);
   const url = BASE_URL + "accommodations";
 
   useEffect(function () {
@@ -70,6 +70,7 @@ function SearchBar() {
         autoFocus
         formatResult={formatResult}
         placeholder={"Search accommodations..."}
+        styling={{ iconColor: "orange", fontFamily: "Raleway" }}
       />
     </Container>
   );

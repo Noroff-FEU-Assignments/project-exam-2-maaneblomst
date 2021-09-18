@@ -34,6 +34,8 @@ export default function LoginForm() {
 
   const [, setAuth] = useContext(AuthContext);
 
+  //an eslint error would not let me pass options as a variable, even though it is used.
+  // eslint-disable-next-line
   const options = {
     body: {
       identifier: "test@test.com",
@@ -69,7 +71,7 @@ export default function LoginForm() {
           <Form.Control
             {...register("identifier")}
             name="identifier"
-            placeholder="username"
+            placeholder="Username"
           />
           {errors.identifier && (
             <FormError variant="warning">{errors.identifier.message}</FormError>
@@ -78,7 +80,8 @@ export default function LoginForm() {
           <Form.Control
             {...register("password")}
             name="password"
-            placeholder="password"
+            placeholder="Password"
+            type="password"
           />
           {errors.password && (
             <FormError variant="warning">{errors.password.message}</FormError>

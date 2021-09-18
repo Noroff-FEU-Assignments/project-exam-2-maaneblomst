@@ -21,7 +21,7 @@ export default function EnquiryModal({ id, name }) {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Book your next stay at {name} </Modal.Title>
         </Modal.Header>
         <Modal.Body>
