@@ -1,0 +1,21 @@
+[build]
+command = "npm run build"
+publish="/build"
+base = "/"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+
+[[redirects]]
+  from = "/overview"
+  to = "/admin"
+
+[[redirects]]
+  from = "/adminenquiries"
+  to = "/admin"
+
+  [[redirects]]
+  from = "/messages"
+  to = "/admin"
+  
