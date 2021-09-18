@@ -68,7 +68,7 @@ export default function ContactForm() {
           Thank you! Your form has been submitted.
         </DisplayAlert>
       )}
-      <Form.Row>
+      <Form.Row className="p-2">
         <Form.Group as={Col} controlId="formFirstName" className="d-sm-block">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -81,7 +81,7 @@ export default function ContactForm() {
           )}
         </Form.Group>
       </Form.Row>
-      <Form.Row>
+      <Form.Row className="p-2">
         <Form.Group as={Col} controlId="formEmail">
           <Form.Label>E-mail</Form.Label>
           <Form.Control
@@ -98,21 +98,24 @@ export default function ContactForm() {
           )}
         </Form.Group>
       </Form.Row>
-      <Form.Group controlId="formMessage">
-        <Form.Label>Message</Form.Label>
-        <Form.Control
-          as="textarea"
-          placeholder="Enter your message here (at least 10 characters)"
-          {...register("message", { required: true })}
-        ></Form.Control>
-        {errors.message && (
-          <FormError variant="warning">{errors.message.message}</FormError>
-        )}
+      <Form.Row className="p-2">
+        <Form.Group controlId="formMessage">
+          <Form.Label>Message</Form.Label>
+          <Form.Control
+            as="textarea"
+            placeholder="Enter your message here (at least 10 characters)"
+            {...register("message", { required: true })}
+          ></Form.Control>
+          {errors.message && (
+            <FormError variant="warning">{errors.message.message}</FormError>
+          )}
+        </Form.Group>
+      </Form.Row>
+      <Form.Group className="text-center p-2">
+        <Button variant="primary" type="submit" className="mt-2">
+          Submit
+        </Button>
       </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
     </Form>
   );
 }

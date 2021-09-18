@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
+import Image from "react-bootstrap/Image";
 import Heading from "../common/Heading";
 import EnquiryModal from "../modals/EnquiryModal";
 import { PopularObjects } from "./PopularObjects";
@@ -55,12 +56,12 @@ export default function AccommodationsDetails() {
 
   return (
     <Container className="content-wrapper" key={accId}>
-      <Row>
+      <Container>
         <Carousel>
           {accommodation.images.map((image) => (
             <Carousel.Item key={image.name}>
-              <img
-                className="d-block w-100"
+              <Image
+                className="d-block w-100 rounded"
                 src={image.url}
                 alt={image.alternativeText}
               />
@@ -70,7 +71,7 @@ export default function AccommodationsDetails() {
             </Carousel.Item>
           ))}
         </Carousel>
-      </Row>
+      </Container>
       <Row className="p-4 mb-2">
         <Col>
           <h1>{name}</h1>
