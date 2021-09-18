@@ -1,7 +1,6 @@
 import { AccommodationsList } from "../../components/accommodations/AccommodationsList";
 import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
 import AddModal from "../../components/modals/AddModal";
 
 function Overview() {
