@@ -1,5 +1,5 @@
 import Routes from "./components/nav/Routes";
-import { AuthProvider } from "./components/context/AuthContext";
+import { AuthProvider } from "./context/AuthContext";
 import ContactModal from "./components/modals/ContactModal";
 import "./sass/custom.scss";
 

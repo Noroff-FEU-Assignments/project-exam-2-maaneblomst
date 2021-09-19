@@ -1,11 +1,11 @@
 import { useState } from "react";
-import useAxios from "../hooks/useAxios";
 import { useHistory } from "react-router-dom";
+import useAxios from "../../hooks/useAxios";
 import { BASE_URL } from "../../constants/Api";
 import Container from "react-bootstrap/Container";
-import { Button, darkColors, lightColors } from "react-floating-action-button";
-import { Trash } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { Trash } from "react-bootstrap-icons";
 
 export function DeleteMessage({ id }) {
   const [show, setShow] = useState(false);
@@ -29,14 +29,10 @@ export function DeleteMessage({ id }) {
     }
   }
   return (
-    <Container>
-      <Button
-        tooltip="Delete message"
-        rotate={true}
-        className="bg-danger"
-        onClick={handleShow}
-      >
+    <>
+      <Button variant="link" className="text-danger" onClick={handleShow}>
         <Trash />
+        Delete
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -45,16 +41,7 @@ export function DeleteMessage({ id }) {
         <Modal.Body>
           <p>Are you sure you want to delete this message?</p>
           <Container>
-            <Button
-              rotate={true}
-              styles={{
-                backgroundColor: darkColors.green,
-                color: lightColors.white,
-              }}
-              onClick={handleDelete}
-            >
-              {error ? "Error" : "Yes"}
-            </Button>
+            <Button onClick={handleDelete}>{error ? "Error" : "Yes"}</Button>
           </Container>
         </Modal.Body>
         <Modal.Footer>
@@ -63,6 +50,6 @@ export function DeleteMessage({ id }) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </Container>
+    </>
   );
 }

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
+import logo from "../../images/logos/brand_logo_dark.png";
+import Row from "react-bootstrap/Row";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-import logo from "../../images/logos/brand_logo_dark.png";
-import Row from "react-bootstrap/Row";
 
 function FooterNav() {
   return (

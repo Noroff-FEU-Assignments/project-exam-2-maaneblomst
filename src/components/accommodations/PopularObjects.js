@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../constants/Api";
-import Container from "react-bootstrap/Container";
-import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
-import Row from "react-bootstrap/Row";
 import Heading from "../common/Heading";
 import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
+import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 export function PopularObjects() {
   const [accommodations, setAccommodations] = useState([]);

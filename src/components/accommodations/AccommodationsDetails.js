@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { BASE_URL } from "../../constants/Api";
 import axios from "axios";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Carousel from "react-bootstrap/Carousel";
-import Image from "react-bootstrap/Image";
 import Heading from "../common/Heading";
 import EnquiryModal from "../modals/EnquiryModal";
 import { PopularObjects } from "./PopularObjects";
 import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Carousel from "react-bootstrap/Carousel";
+import Image from "react-bootstrap/Image";
 
 export default function AccommodationsDetails() {
   const [accommodation, setAccommodation] = useState(null);

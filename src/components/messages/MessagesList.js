@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import useAxios from "../hooks/useAxios";
-import { BASE_URL } from "../../constants/Api";
-import Container from "react-bootstrap/Container";
-import { DeleteMessage } from "./deleteMessage";
 import { Link } from "react-router-dom";
-import ListGroupItem from "react-bootstrap/ListGroupItem";
+import useAxios from "../../hooks/useAxios";
 import moment from "moment";
+import { BASE_URL } from "../../constants/Api";
+import { DeleteMessage } from "./deleteMessage";
+import ListGroupItem from "react-bootstrap/ListGroupItem";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import { Reply } from "react-bootstrap-icons";
 
 export function MessagesList() {
   const [messages, setMessages] = useState([]);
@@ -63,7 +65,7 @@ export function MessagesList() {
 
         return (
           <ListGroupItem key={id}>
-            <span class="fw-bold">{dateFormatter(date)}</span>
+            <span className="fw-bold">{dateFormatter(date)}</span>
             <Container>
               <span className="fw-bold">Name: </span>
               {name}
@@ -75,10 +77,17 @@ export function MessagesList() {
             <Container>
               <span className="fw-bold">Message: </span>
               {message}
-              <DeleteMessage id={id} />
-              <Link to={{ pathname: "mailto:" + email }} target="_blank">
+            </Container>
+            <Container>
+              <Button
+                variant="link"
+                as={Link}
+                to={{ pathname: "mailto:" + email }}
+              >
+                <Reply />
                 Reply
-              </Link>
+              </Button>
+              <DeleteMessage id={id} />
             </Container>
           </ListGroupItem>
         );

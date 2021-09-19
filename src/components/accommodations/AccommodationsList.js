@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
+import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
 import { BASE_URL } from "../../constants/Api";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
-import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
 
 export function AccommodationsList() {
   const [accommodations, setAccommodations] = useState([]);

@@ -1,4 +1,8 @@
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+//Originally I used BrowseRouter, but switched to HashRouter to be able to navigate properly on Netlify.
+//Redirecting in the netlify.toml file would not work, and really needed it to during testing.
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navigation from "../nav/Nav";
+import FooterNav from "./FooterNav";
 import Home from "../../pages/home/Home";
 import Accommodations from "../../pages/accommodations/Accommodations";
 import AccommodationsDetails from "../accommodations/AccommodationsDetails";
@@ -8,8 +12,6 @@ import AdminEnquiries from "../../pages/admin/AdminEnquiries";
 import Bergen from "../../pages/bergen/Bergen";
 import Overview from "../../pages/admin/Overview";
 import Contact from "../../pages/contact/Contact";
-import Navigation from "../nav/Nav";
-import FooterNav from "./FooterNav";
 
 function Routes() {
   return (

@@ -1,8 +1,8 @@
+import { useState } from "react";
+import AddNew from "../forms/AddNew";
 import { Container, Button } from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
-import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import AddNew from "../forms/AddNew";
 
 export default function AddModal() {
   const [show, setShow] = useState(false);

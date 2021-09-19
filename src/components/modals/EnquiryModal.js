@@ -1,7 +1,7 @@
 import { useState } from "react";
+import EnquiryForm from "../forms/EnquiryForm";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-floating-action-button";
-import EnquiryForm from "../forms/EnquiryForm";
 
 export default function EnquiryModal({ id, name }) {
   const [show, setShow] = useState(false);

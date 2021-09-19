@@ -1,8 +1,8 @@
+import { useState } from "react";
+import ContactForm from "../forms/ContactForm";
 import { Container, Button } from "react-floating-action-button";
 import { Envelope } from "react-bootstrap-icons";
-import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import ContactForm from "../forms/ContactForm";
 
 export default function ContactModal() {
   const [show, setShow] = useState(false);

@@ -1,10 +1,10 @@
+import { Link } from "react-router-dom";
+import PlaceholderImage from "../../../images/placeholder/accommodation-loading.png";
+import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
-import Spinner from "react-bootstrap/Spinner";
-import PlaceholderImage from "../../../images/placeholder/accommodation-loading.png";
 
 export function ItemCard({ id, image, name, price, facilities }) {
   let facilitiesToRender;

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import useAxios from "../hooks/useAxios";
 import { useHistory } from "react-router-dom";
+import useAxios from "../../hooks/useAxios";
 import { BASE_URL } from "../../constants/Api";
-import Container from "react-bootstrap/Container";
 import { Button, darkColors, lightColors } from "react-floating-action-button";
-import { Trash } from "react-bootstrap-icons";
+import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
+import { Trash } from "react-bootstrap-icons";
 
 export function DeleteEnquiry({ id }) {
   const [show, setShow] = useState(false);

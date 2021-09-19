@@ -1,8 +1,8 @@
-import { Container, Button } from "react-bootstrap";
-import { Key } from "react-bootstrap-icons";
 import { useState } from "react";
-import Modal from "react-bootstrap/Modal";
+import { Container, Button } from "react-bootstrap";
 import LoginForm from "../forms/LoginForm";
+import { Key } from "react-bootstrap-icons";
+import Modal from "react-bootstrap/Modal";
 
 export default function LoginModal() {
   const [show, setShow] = useState(false);
