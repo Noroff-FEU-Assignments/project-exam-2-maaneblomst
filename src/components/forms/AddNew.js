@@ -149,7 +149,7 @@ export default function AddNew() {
         )}
       </Form.Group>
       <Button variant="primary" type="submit">
-        Submit
+        {submit ? "Please wait..." : "Add"}
       </Button>
     </Form>
   );

@@ -174,7 +174,7 @@ export default function EnquiryForm({ id, name }) {
       </Form.Group>
 
       <Button variant="primary" type="submit">
-        Submit
+        {submit ? "Please wait..." : "Send"}
       </Button>
     </Form>
   );

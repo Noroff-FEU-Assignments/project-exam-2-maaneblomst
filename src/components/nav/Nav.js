@@ -8,7 +8,7 @@ import logo from "../../images/logos/brand_logo.png";
 
 function Navigation() {
   return (
-    <Navbar bg="white" expand="lg" className="mb-4">
+    <Navbar collapseOnSelect bg="white" expand="lg" className="mb-4">
       <Container>
         <Link to="/">
           <Navbar.Brand>
@@ -20,24 +20,34 @@ function Navigation() {
             />
           </Navbar.Brand>
         </Link>
-        <Navbar.Toggle aria-controls="basic-navbar" />
-        <Navbar.Collapse id="basic-navbar">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mx-auto">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-            <Link to="/accommodations" className="nav-link">
-              Accommodations
-            </Link>
-            <Link to="/bergen" className="nav-link">
-              Bergen
-            </Link>
-            <Link to="#" className="nav-link">
-              About
-            </Link>
-            <Link to="/contact" className="nav-link">
-              Contact
-            </Link>
+            <Nav.Item>
+              <Nav.Link eventKey="1" as={Link} to="/">
+                Home
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="2" as={Link} to="/accommodations">
+                Accommodations
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="3" as={Link} to="/bergen">
+                Bergen
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link disabled eventKey="4" as={Link} to="/about">
+                About
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="5" as={Link} to="/contact">
+                Contact
+              </Nav.Link>
+            </Nav.Item>
           </Nav>
           <SecondaryNav />
         </Navbar.Collapse>

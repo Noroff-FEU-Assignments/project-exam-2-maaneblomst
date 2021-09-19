@@ -24,7 +24,7 @@ function SecondaryNav() {
     <Nav className="mr-auto">
       <PersonCircle size={20} className="text-primary mt-2" />
       <Container>
-        <NavDropdown title="My Account" id="basic-nav-dropdown">
+        <NavDropdown title="My Account" id="collasible-nav-dropdown">
           {auth ? (
             <>
               <NavDropdown.Item

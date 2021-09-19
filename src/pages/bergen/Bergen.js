@@ -11,7 +11,7 @@ function Bergen() {
   return (
     <>
       <div className="hero-image-bergen mb-4"></div>
-      <Container className="content-wrapper">
+      <Container className="content-wrapper p-3">
         <Heading size="1" content="Bergen" />
         <Row>
           <Container className="fs-5 text-center p-5">
@@ -22,7 +22,7 @@ function Bergen() {
           </Container>
         </Row>
         <Heading size="2" content="Things to do in Bergen?" />
-        <Row className="p-2">
+        <Row className="m-3">
           <Col xs={12} sm={6} md={6} lg={6}>
             <Heading size="3" content="Do this" />
             <p>

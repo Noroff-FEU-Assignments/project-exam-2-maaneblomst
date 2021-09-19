@@ -9,6 +9,7 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import { EmojiSmile } from "react-bootstrap-icons";
 
 const url = BASE_URL + "messages";
 
@@ -56,16 +57,16 @@ export default function ContactForm() {
       console.log(response.data);
     } catch (error) {
       setSubmissionError(true);
+      console.log(error);
       console.log(submissionError);
     } finally {
-      setSubmit(false);
     }
   }
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} className="mt-5">
+    <Form onSubmit={handleSubmit(onSubmit)} className="mt-1">
       {submit && (
         <DisplayAlert variant="success">
-          Thank you! Your form has been submitted.
+          Thank you! Your form has been submitted. <EmojiSmile />
         </DisplayAlert>
       )}
       <Form.Row className="p-2">
@@ -111,11 +112,9 @@ export default function ContactForm() {
           )}
         </Form.Group>
       </Form.Row>
-      <Form.Group className="text-center p-2">
-        <Button variant="primary" type="submit" className="mt-2">
-          Submit
-        </Button>
-      </Form.Group>
+      <Button variant="primary" type="submit">
+        {submit ? "Please wait..." : "Send"}
+      </Button>
     </Form>
   );
 }

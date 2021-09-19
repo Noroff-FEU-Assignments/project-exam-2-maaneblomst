@@ -56,10 +56,10 @@ export default function AccommodationsDetails() {
 
   return (
     <Container className="content-wrapper" key={accId}>
-      <Container>
+      <Container fluid>
         <Carousel>
           {accommodation.images.map((image) => (
-            <Carousel.Item key={image.name}>
+            <Carousel.Item key={image.name} align="center">
               <Image
                 className="d-block w-100 rounded"
                 src={image.url}
@@ -72,7 +72,7 @@ export default function AccommodationsDetails() {
           ))}
         </Carousel>
       </Container>
-      <Row className="p-4 mb-2">
+      <Row className="pt-2 mb-2">
         <Col>
           <h1>{name}</h1>
         </Col>

@@ -22,7 +22,7 @@ export function ItemCard({ id, image, name, price, facilities }) {
     });
   }
   return (
-    <Col xs={12} sm={6} md={6} lg={4} className="accommodation mt-4">
+    <Col xs={12} sm={6} md={4} lg={4} className="accommodation mt-4">
       <Link to={`/accommodations/${id}`} className="text-decoration-none">
         <Card className="w-100 rounded shadow text-dark">
           <Card.Img src={image} />
@@ -46,7 +46,7 @@ export function ItemCard({ id, image, name, price, facilities }) {
 export function PlaceholderCard() {
   return (
     <Row>
-      <Col xs={12} sm={10} md={8} lg={4} className="accommodation mt-4 p-0">
+      <Col xs={12} sm={6} md={4} lg={4} className="accommodation mt-4 p-0">
         <Card
           style={{ width: "18rem" }}
           className="w-75 m-3 rounded shadow text-dark"
@@ -59,7 +59,7 @@ export function PlaceholderCard() {
           </Card.Body>
         </Card>
       </Col>
-      <Col xs={12} sm={10} md={8} lg={4} className="accommodation mt-4 p-0">
+      <Col xs={12} sm={6} md={4} lg={4} className="accommodation mt-4 p-0">
         <Card
           style={{ width: "18rem" }}
           className="w-75 m-3 rounded shadow text-dark"
@@ -72,7 +72,7 @@ export function PlaceholderCard() {
           </Card.Body>
         </Card>
       </Col>
-      <Col xs={12} sm={10} md={8} lg={4} className="accommodation mt-4 p-0">
+      <Col xs={12} sm={6} md={4} lg={4} className="accommodation mt-4 p-0">
         <Card
           style={{ width: "18rem" }}
           className="w-75 m-3 rounded shadow text-dark"
