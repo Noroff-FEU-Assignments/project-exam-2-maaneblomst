@@ -39,6 +39,14 @@ export function MessagesList() {
       <div>Sorry, something went wrong. Please contact your administrator.</div>
     );
 
+  messages.sort(function (date1, date2) {
+    date1 = new Date(date1);
+    date2 = new Date(date2);
+    if (date1 > date2) return 1;
+    if (date1 < date2) return -1;
+    return messages;
+  });
+
   return (
     <Container className="messages">
       {messages.map((request) => {
@@ -49,13 +57,13 @@ export function MessagesList() {
         const date = request.created_at;
 
         function dateFormatter() {
-          let formattedDate = moment(date).format("DD MMMM YYYY");
+          let formattedDate = moment(date).format("DD/MM/YYYY");
           return formattedDate;
         }
 
         return (
           <ListGroupItem key={id}>
-            <span>{dateFormatter(date)}</span>
+            <span class="fw-bold">{dateFormatter(date)}</span>
             <Container>
               <span className="fw-bold">Name: </span>
               {name}

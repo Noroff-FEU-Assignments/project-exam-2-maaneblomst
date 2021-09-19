@@ -4,14 +4,5 @@ publish="/build"
 base = "/"
 
 [[redirects]]
-  from = "/overview"
-  to = "/admin"
-
-[[redirects]]
-  from = "/adminenquiries"
-  to = "/admin"
-
-  [[redirects]]
-  from = "/messages"
-  to = "/admin"
-  
+  from = "/*"
+  to = "/"

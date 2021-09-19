@@ -5,6 +5,7 @@ import { DeleteEnquiry } from "./deleteEnquiry";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
+import moment from "moment";
 
 export function EnquiriesList() {
   const [enquiries, setEnquiries] = useState([]);
@@ -39,6 +40,14 @@ export function EnquiriesList() {
       <div>Sorry, something went wrong. Please contact your administrator.</div>
     );
 
+  enquiries.sort(function (date1, date2) {
+    date1 = new Date(date1);
+    date2 = new Date(date2);
+    if (date1 > date2) return 1;
+    if (date1 < date2) return -1;
+    return enquiries;
+  });
+
   return (
     <Container className="enquiries">
       {enquiries.map((request) => {
@@ -49,9 +58,20 @@ export function EnquiriesList() {
         const dateTo = request.date_to;
         const accommodation = request.accommodation;
         const message = request.message;
+        const created = request.created_at;
+
+        function dateFormatter() {
+          let formattedDate = moment(created).format("DD/MM/YYYY");
+          return formattedDate;
+        }
 
         return (
           <ListGroupItem key={id}>
+            <Container>
+              <span className="fw-bold">
+                Created at: {dateFormatter(created)}
+              </span>
+            </Container>
             <Container>
               <span className="fw-bold">Name: </span>
               {name}
@@ -77,9 +97,7 @@ export function EnquiriesList() {
               {message}
             </Container>
             <DeleteEnquiry id={id} />
-            <Link to={{ pathname: "mailto:" + email }} target="_blank">
-              Reply
-            </Link>
+            <Link to={{ pathname: "mailto:" + email }}>Reply</Link>
           </ListGroupItem>
         );
       })}
