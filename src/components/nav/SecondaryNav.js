@@ -30,6 +30,7 @@ function SecondaryNav() {
               <NavDropdown.Item
                 as={Link}
                 to="/admin"
+                eventKey="6"
                 className="basic-nav-dropdown"
               >
                 <Speedometer></Speedometer> Dashboard
@@ -37,6 +38,7 @@ function SecondaryNav() {
               <NavDropdown.Divider />
               <Button
                 variant="link"
+                eventKey="7"
                 className="text-decoration-none"
                 onClick={logOut}
               >
