@@ -55,7 +55,7 @@ export default function LoginForm() {
       console.log(response.data);
       setTimeout(function () {
         history.push("/admin");
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.log("error", error);
       setLoginError(error.toString());
