@@ -23,8 +23,6 @@ export function ItemCard({
   const [auth] = useContext(AuthContext);
   const [hoverRef, isHovered] = useHover();
 
-  const hoverStyles = { transform: "scale(1.5)", transition: "transform .2s" };
-
   let facilitiesToRender;
   if (facilities) {
     facilitiesToRender = facilities.map((facility) => {
