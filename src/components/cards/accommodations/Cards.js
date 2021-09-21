@@ -1,12 +1,26 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../../context/AuthContext";
 import PlaceholderImage from "../../../images/placeholder/accommodation-loading.png";
 import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import EditModal from "../../modals/admin/EditModal";
 
-export function ItemCard({ id, image, name, price, facilities }) {
+export function ItemCard({
+  id,
+  images,
+  name,
+  price,
+  description,
+  popular,
+  facilities,
+}) {
+  const [auth] = useContext(AuthContext);
+
   let facilitiesToRender;
   if (facilities) {
     facilitiesToRender = facilities.map((facility) => {
@@ -22,23 +36,37 @@ export function ItemCard({ id, image, name, price, facilities }) {
     });
   }
   return (
-    <Col xs={12} sm={6} md={4} lg={4} className="accommodation mt-4">
+    <Col xs={12} sm={6} md={6} lg={4} className="accommodation mt-4 p-4">
       <Link to={`/accommodations/${id}`} className="text-decoration-none">
         <Card className="w-100 rounded shadow text-dark">
-          <Card.Img src={image} />
+          <Card.Img src={images} />
           <Card.Body>
             <Card.Title>{name}</Card.Title>
-            <span className="p-2">
-              FROM
-              <span className="text-primary font-weight-bold h4 p-1">
-                {price}
+            <Container className="p-1">
+              <span>
+                FROM
+                <span className="text-primary font-weight-bold h4 p-2">
+                  {price}
+                </span>
+                NOK
               </span>
-              NOK
-            </span>
+            </Container>
             <div key={id.facilitiesToRender}>{facilitiesToRender}</div>
           </Card.Body>
         </Card>
       </Link>
+      {auth ? (
+        <EditModal
+          id={id}
+          images={images}
+          name={name}
+          price={price}
+          description={description}
+          popular={popular}
+        />
+      ) : (
+        ""
+      )}
     </Col>
   );
 }
@@ -46,7 +74,7 @@ export function ItemCard({ id, image, name, price, facilities }) {
 export function PlaceholderCard() {
   return (
     <Row>
-      <Col xs={12} sm={6} md={4} lg={4} className="accommodation mt-4 p-0">
+      <Col xs={12} sm={6} md={4} lg={4} className="accommodation mt-4 p-4">
         <Card
           style={{ width: "18rem" }}
           className="w-75 m-3 rounded shadow text-dark"

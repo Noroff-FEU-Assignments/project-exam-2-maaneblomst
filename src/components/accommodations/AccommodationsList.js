@@ -48,10 +48,12 @@ export function AccommodationsList() {
             id={object.id}
             name={object.name}
             price={object.price}
-            image={
+            images={
               object.images[0] == null ? PlaceholderImage : object.images[0].url
             }
             facilities={object.facilities}
+            description={object.description}
+            popular={object.popular}
           />
         ))}
       </Row>

@@ -1,6 +1,8 @@
 //Originally I used BrowseRouter, but switched to HashRouter to be able to navigate properly on Netlify.
 //Redirecting in the netlify.toml file would not work, and really needed it to during testing.
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+// eslint-disable-next-line
+import { PUBLIC_URL } from "../../constants/PublicUrl";
 import Navigation from "../nav/Nav";
 import FooterNav from "./FooterNav";
 import Home from "../../pages/home/Home";
@@ -15,7 +17,7 @@ import Contact from "../../pages/contact/Contact";
 
 function Routes() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Navigation />
       <>
         <Switch>

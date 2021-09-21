@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddNew from "../forms/AddNew";
+import AddNew from "../../forms/AddNew";
 import { Container, Button } from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";

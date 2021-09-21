@@ -44,7 +44,7 @@ export function PopularObjects() {
 
   return (
     <Container className="popularObjects">
-      <Row className="bg-light p-2">
+      <Row className="bg-light p-3">
         <Heading size="3" content="Popular Bookings &#128293;" />
         {filtered.map((popObject) => (
           <ItemCard
@@ -52,7 +52,7 @@ export function PopularObjects() {
             id={popObject.id}
             name={popObject.name}
             price={popObject.price}
-            image={
+            images={
               popObject.images[0] == null
                 ? PlaceholderImage
                 : popObject.images[0].url

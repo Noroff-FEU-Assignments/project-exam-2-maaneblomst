@@ -6,7 +6,9 @@ import { BASE_URL } from "../../constants/Api";
 import { DeleteEnquiry } from "./deleteEnquiry";
 import Container from "react-bootstrap/Container";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
-
+import { Reply } from "react-bootstrap-icons";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
 export function EnquiriesList() {
   const [enquiries, setEnquiries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -68,36 +70,48 @@ export function EnquiriesList() {
         return (
           <ListGroupItem key={id}>
             <Container>
-              <span className="fw-bold">
-                Created at: {dateFormatter(created)}
-              </span>
+              <Row>
+                <span className="fw-bold">
+                  Created at: {dateFormatter(created)}
+                </span>
+              </Row>
+              <Row>
+                <Container>
+                  <span className="fw-bold">Name: </span>
+                  <span>{name}</span> <br />
+                  <span className="fw-bold">E-mail: </span>
+                  <span>{email}</span>
+                </Container>
+              </Row>
+              <Row>
+                <Container>
+                  <span className="fw-bold">From: </span>
+                  {dateFrom}
+                  <br />
+                  <span className="fw-bold">To: </span>
+                  {dateTo}
+                </Container>
+              </Row>
+              <Row>
+                <Container>
+                  <span className="fw-bold">Accommodation: </span>
+                  {accommodation} <br />
+                  <span className="fw-bold">Message:</span>
+                  <span>{message}</span>
+                </Container>
+              </Row>
             </Container>
             <Container>
-              <span className="fw-bold">Name: </span>
-              {name}
+              <Button
+                variant="link"
+                as={Link}
+                to={{ pathname: "mailto:" + email }}
+              >
+                <Reply />
+                Reply
+              </Button>
+              <DeleteEnquiry id={id} />
             </Container>
-            <Container>
-              <span className="fw-bold">E-mail: </span>
-              {email}
-            </Container>
-            <Container>
-              <span className="fw-bold">From: </span>
-              {dateFrom}
-            </Container>
-            <Container>
-              <span className="fw-bold">To: </span>
-              {dateTo}
-            </Container>
-            <Container>
-              <span className="fw-bold">Accommodation: </span>
-              {accommodation}
-            </Container>
-            <Container>
-              <span className="fw-bold">Message: </span>
-              {message}
-            </Container>
-            <DeleteEnquiry id={id} />
-            <Link to={{ pathname: "mailto:" + email }}>Reply</Link>
           </ListGroupItem>
         );
       })}

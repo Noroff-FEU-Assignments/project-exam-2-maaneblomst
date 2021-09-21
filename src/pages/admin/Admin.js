@@ -12,7 +12,7 @@ function Admin() {
   return (
     <Container className="content-wrapper">
       <Heading size="1" content="Dashboard" />
-      <Row>
+      <Row className="m-5">
         <DashboardCard title="Messages" link="messages" icon={envelope} />
         <DashboardCard
           title="Enquiries"

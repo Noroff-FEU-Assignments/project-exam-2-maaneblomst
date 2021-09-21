@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
-import logo from "../../images/logos/brand_logo.png";
+import logo from "../../images/logos/Holidaze-logo.png";
 
 function Navigation() {
   return (
@@ -39,12 +39,7 @@ function Navigation() {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link disabled eventKey="4" as={Link} to="/about">
-                About
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="5" as={Link} to="/contact">
+              <Nav.Link eventKey="4" as={Link} to="/contact">
                 Contact
               </Nav.Link>
             </Nav.Item>

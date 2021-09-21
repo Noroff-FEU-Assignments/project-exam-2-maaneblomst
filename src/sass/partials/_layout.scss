@@ -1,12 +1,13 @@
-#root {
-  width: 100%;
-}
-
 .container {
   max-width: 100% !important;
 }
 
+.card .accommodation {
+  min-height: 300px;
+}
+
 .content-wrapper {
+  max-width: 1080px;
   min-height: 100vh;
   padding: 0;
   margin: 0 auto;

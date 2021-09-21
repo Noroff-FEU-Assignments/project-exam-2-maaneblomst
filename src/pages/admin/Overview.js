@@ -1,7 +1,7 @@
 import { AccommodationsList } from "../../components/accommodations/AccommodationsList";
 import Heading from "../../components/common/Heading";
 import Container from "react-bootstrap/Container";
-import AddModal from "../../components/modals/AddModal";
+import AddModal from "../../components/modals/admin/AddModal";
 
 function Overview() {
   return (

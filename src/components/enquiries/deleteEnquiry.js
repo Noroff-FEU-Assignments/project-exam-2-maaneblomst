@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { BASE_URL } from "../../constants/Api";
-import { Button, darkColors, lightColors } from "react-floating-action-button";
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import { Trash } from "react-bootstrap-icons";
@@ -29,14 +29,10 @@ export function DeleteEnquiry({ id }) {
     }
   }
   return (
-    <Container>
-      <Button
-        tooltip="Delete enquiry"
-        rotate={true}
-        className="bg-primary"
-        onClick={handleShow}
-      >
+    <>
+      <Button variant="link" className="text-danger" onClick={handleShow}>
         <Trash />
+        Delete
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -48,16 +44,7 @@ export function DeleteEnquiry({ id }) {
             forever!
           </p>
           <Container>
-            <Button
-              rotate={true}
-              styles={{
-                backgroundColor: darkColors.green,
-                color: lightColors.white,
-              }}
-              onClick={handleDelete}
-            >
-              {error ? "Error" : "Yes"}
-            </Button>
+            <Button onClick={handleDelete}>{error ? "Error" : "Yes"}</Button>
           </Container>
         </Modal.Body>
         <Modal.Footer>
@@ -66,6 +53,6 @@ export function DeleteEnquiry({ id }) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </Container>
+    </>
   );
 }

@@ -22,33 +22,31 @@ function SecondaryNav() {
   }
   return (
     <Nav className="mr-auto">
-      <PersonCircle size={20} className="text-primary mt-2" />
+      {auth ? <PersonCircle size={20} className="text-primary mt-2" /> : ""}
       <Container>
-        <NavDropdown title="My Account" id="collasible-nav-dropdown">
-          {auth ? (
-            <>
-              <NavDropdown.Item
-                as={Link}
-                to="/admin"
-                eventKey="6"
-                className="basic-nav-dropdown"
-              >
-                <Speedometer></Speedometer> Dashboard
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <Button
-                variant="link"
-                eventKey="7"
-                className="text-decoration-none"
-                onClick={logOut}
-              >
-                <BoxArrowRight></BoxArrowRight> Log out
-              </Button>
-            </>
-          ) : (
-            <LoginModal />
-          )}
-        </NavDropdown>
+        {auth ? (
+          <NavDropdown title="My Account" id="collasible-nav-dropdown">
+            <NavDropdown.Item
+              as={Link}
+              to="/admin"
+              eventKey="6"
+              className="basic-nav-dropdown"
+            >
+              <Speedometer></Speedometer> Dashboard
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <Button
+              variant="link"
+              eventKey="7"
+              className="text-decoration-none"
+              onClick={logOut}
+            >
+              <BoxArrowRight></BoxArrowRight> Log out
+            </Button>
+          </NavDropdown>
+        ) : (
+          <LoginModal />
+        )}
       </Container>
     </Nav>
   );

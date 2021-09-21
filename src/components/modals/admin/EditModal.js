@@ -1,15 +1,16 @@
 import { useState } from "react";
-import EnquiryForm from "../forms/EnquiryForm";
+import EditAccommodation from "../../forms/EditAccomodation";
+import { Button } from "react-bootstrap";
+import { Pen } from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
-import { Button } from "react-floating-action-button";
 
-export default function EnquiryModal({
+export default function EditModal({
   id,
   name,
-  price,
   description,
-  image,
+  price,
   popular,
+  images,
 }) {
   const [show, setShow] = useState(false);
 
@@ -18,27 +19,23 @@ export default function EnquiryModal({
 
   return (
     <>
-      <Button
-        tooltip="Contact us"
-        rotate={true}
-        onClick={handleShow}
-        className="bg-primary"
-      >
-        Book
+      <Button variant="link" tooltip="Edit accommodation" onClick={handleShow}>
+        <Pen size={10} />
+        Edit
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>Book your next stay at {name} </Modal.Title>
+          <Modal.Title>Edit {name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EnquiryForm
+          <EditAccommodation
             id={id}
             name={name}
-            price={price}
             description={description}
-            image={image}
+            price={price}
             popular={popular}
+            images={images}
           />
         </Modal.Body>
         <Modal.Footer>

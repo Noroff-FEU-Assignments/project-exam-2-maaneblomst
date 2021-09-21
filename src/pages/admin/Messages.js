@@ -11,7 +11,7 @@ function Messages() {
       <Heading size="1" content="Messages" />
       <Row>
         <Col />
-        <Col xs={12} sm={10} md={10} lg={10}>
+        <Col xs={12} sm={10} md={10} lg={6}>
           <ListGroup>
             <MessagesList />
           </ListGroup>

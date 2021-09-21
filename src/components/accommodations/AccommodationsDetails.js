@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../constants/Api";
 import axios from "axios";
 import Heading from "../common/Heading";
 import EnquiryModal from "../modals/EnquiryModal";
 import { PopularObjects } from "./PopularObjects";
+import { DividerSection } from "../common/DividerSection";
 import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
 
@@ -122,20 +122,12 @@ export default function AccommodationsDetails() {
           />
         </Col>
       </Row>
-      <Row className="bg-light mt-5">
-        <Col className="text-center p-5">
-          <p className="h4">Do you have questions?</p>
-          <p className="text-muted">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor.
-          </p>
-          <Link to="/contact" className="d-block">
-            <Button className="btn-lg" variant="outline-secondary">
-              Get in Touch
-            </Button>
-          </Link>
-        </Col>
-      </Row>
+      <DividerSection
+        title="Do you have questions?"
+        content="Lorem ipsum dolor"
+        buttonTitle="Get in Touch"
+        link="/contact"
+      />
       <Row className="bg-light mt-5 p-2">
         <PopularObjects />
       </Row>

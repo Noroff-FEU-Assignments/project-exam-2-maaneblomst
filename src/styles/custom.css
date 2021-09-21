@@ -12094,8 +12094,8 @@ h1, .h1, h2, .h2, h3, .h3 {
   text-align: center;
 }
 
-#root {
-  width: 100%;
+body {
+  margin: 0 auto;
 }
 
 .container {
@@ -12114,8 +12114,12 @@ h1, .h1, h2, .h2, h3, .h3 {
   color: #fff;
 }
 
+.card-img {
+  min-height: 250px;
+}
+
 .hero-image-home {
-  background-image: url("../../images/home/bergen_home.jpg");
+  background-image: url("../../images/home/bergen_home2.jpg");
   height: 500px;
   background-attachment: fixed;
   background-position: center;
@@ -12147,10 +12151,17 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 /* Increase/decrease the pixels if needed */
 /* For all devices with a screen size smaller than 1366px, the background-attachment property will be scroll instead of fixed */
-@media only screen and (max-device-width: 1366px) {
+@media only screen and (max-device-width: 999px) {
   .hero-image-bergen,
   .hero-image-contact,
   .hero-image-home {
     background-attachment: scroll;
   }
+  .hero-search {
+    padding-top: 10em;
+  }
+}
+
+.nav-item {
+  cursor: pointer;
 }
