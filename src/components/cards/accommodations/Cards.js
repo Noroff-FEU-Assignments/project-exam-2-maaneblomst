@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
+import { useHover } from "../../../hooks/useHover";
 import PlaceholderImage from "../../../images/placeholder/accommodation-loading.png";
 import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
@@ -20,6 +21,9 @@ export function ItemCard({
   facilities,
 }) {
   const [auth] = useContext(AuthContext);
+  const [hoverRef, isHovered] = useHover();
+
+  const hoverStyles = { transform: "scale(1.5)", transition: "transform .2s" };
 
   let facilitiesToRender;
   if (facilities) {
@@ -37,23 +41,46 @@ export function ItemCard({
   }
   return (
     <Col xs={12} sm={6} md={6} lg={4} className="accommodation mt-4 p-4">
-      <Link to={`/accommodations/${id}`} className="text-decoration-none">
-        <Card className="w-100 rounded shadow text-dark">
-          <Card.Img src={images} />
-          <Card.Body>
-            <Card.Title>{name}</Card.Title>
-            <Container className="p-1">
-              <span>
-                FROM
-                <span className="text-primary font-weight-bold h4 p-2">
-                  {price}
+      <Link
+        to={`/accommodations/${id}`}
+        ref={hoverRef}
+        className="text-decoration-none"
+      >
+        {isHovered ? (
+          <Card className="card-hover w-100 rounded shadow text-dark">
+            <Card.Img src={images} />
+            <Card.Body>
+              <Card.Title>{name}</Card.Title>
+              <Container className="p-1">
+                <span>
+                  FROM
+                  <span className="text-primary font-weight-bold h4 p-2">
+                    {price}
+                  </span>
+                  NOK
                 </span>
-                NOK
-              </span>
-            </Container>
-            <div key={id.facilitiesToRender}>{facilitiesToRender}</div>
-          </Card.Body>
-        </Card>
+              </Container>
+              <div key={id.facilitiesToRender}>{facilitiesToRender}</div>
+            </Card.Body>
+          </Card>
+        ) : (
+          <Card className="w-100 rounded shadow text-dark">
+            <Card.Img src={images} />
+            <Card.Body>
+              <Card.Title>{name}</Card.Title>
+              <Container className="p-1">
+                <span>
+                  FROM
+                  <span className="text-primary font-weight-bold h4 p-2">
+                    {price}
+                  </span>
+                  NOK
+                </span>
+              </Container>
+              <div key={id.facilitiesToRender}>{facilitiesToRender}</div>
+            </Card.Body>
+          </Card>
+        )}
       </Link>
       {auth ? (
         <EditModal
