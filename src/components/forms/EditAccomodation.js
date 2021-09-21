@@ -11,14 +11,15 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import { EmojiSmile } from "react-bootstrap-icons";
+import { useHistory } from "react-router";
 
 // Sett inn reset på popular-checkbox!
 
 const schema = yup.object().shape({
   name: yup
     .string()
-    .required("Please enter your first name")
-    .min(1, "Your name must be at least 2 characters."),
+    .required("Please enter a new name for your accommodation")
+    .min(1, "The name must be at least 2 characters."),
   description: yup
     .string()
     .required("Please add a description")
@@ -41,9 +42,10 @@ export default function EditAccommodation({
 }) {
   const [submit, setSubmit] = useState(false);
   const [sumbissionError, setSubmissionError] = useState(null);
-  const [checked, setChecked] = useState(false);
+  const [setChecked] = useState(false);
 
   const http = useAxios();
+  const history = useHistory();
   const formData = new FormData();
 
   const url = BASE_URL + "accommodations/" + id;
@@ -75,7 +77,9 @@ export default function EditAccommodation({
       const response = await http.put(url, formData);
       setSubmit(true);
       console.log(response.data);
-      console.log("this is a popular product" + checked);
+      setTimeout(function () {
+        history.go();
+      }, 3000);
     } catch (error) {
       setSubmissionError(true);
       console.log(error);

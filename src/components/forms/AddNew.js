@@ -10,6 +10,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { EmojiSmile } from "react-bootstrap-icons";
+import { useHistory } from "react-router";
 
 // Sett inn reset på popular-checkbox!
 
@@ -36,10 +37,11 @@ const schema = yup.object().shape({
 export default function AddNew() {
   const [submit, setSubmit] = useState(false);
   const [sumbissionError, setSubmissionError] = useState(null);
-  const [checked, setChecked] = useState(false);
+  const [setChecked] = useState(false);
 
   const http = useAxios();
   const formData = new FormData();
+  const history = useHistory();
 
   const {
     register,
@@ -68,7 +70,9 @@ export default function AddNew() {
       const response = await http.post(url, formData);
       setSubmit(true);
       console.log(response.data);
-      console.log("this is a popular product" + checked);
+      setTimeout(function () {
+        history.go();
+      }, 3000);
     } catch (error) {
       setSubmissionError(true);
       console.log(error);

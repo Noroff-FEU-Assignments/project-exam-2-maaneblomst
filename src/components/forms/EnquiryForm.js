@@ -10,6 +10,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { EmojiSmile } from "react-bootstrap-icons";
+import { useHistory } from "react-router";
 
 const url = BASE_URL + "enquiries";
 
@@ -34,6 +35,7 @@ const schema = yup.object().shape({
 export default function EnquiryForm({ id, name }) {
   const [submit, setSubmit] = useState(false);
   const [submissionError, setSubmissionError] = useState(null);
+  const history = useHistory();
 
   const {
     register,
@@ -62,6 +64,9 @@ export default function EnquiryForm({ id, name }) {
       const response = await axios.post(url, options);
       setSubmit(true);
       console.log(response.data);
+      setTimeout(function () {
+        history.go();
+      }, 3000);
     } catch (error) {
       setSubmissionError(true);
       console.log(error);

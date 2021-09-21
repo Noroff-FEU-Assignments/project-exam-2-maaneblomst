@@ -22,7 +22,9 @@ export function DeleteEnquiry({ id }) {
     try {
       await http.delete(url);
       console.log("deleted id " + id);
-      history.push("/adminenquiries");
+      setTimeout(function () {
+        history.go();
+      }, 3000);
       setShow(false);
     } catch (error) {
       setError(error);

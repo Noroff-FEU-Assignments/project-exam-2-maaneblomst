@@ -21,6 +21,7 @@ const schema = yup.object().shape({
 export default function LoginForm() {
   const [submit, setSubmit] = useState(false);
   const [loginError, setLoginError] = useState(null);
+  const [, setAuth] = useContext(AuthContext);
 
   const history = useHistory();
 
@@ -31,8 +32,6 @@ export default function LoginForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const [, setAuth] = useContext(AuthContext);
 
   //an eslint error would not let me pass options as a variable, even though it is used.
   // eslint-disable-next-line
@@ -54,7 +53,9 @@ export default function LoginForm() {
       const response = await axios.post(url, options);
       setAuth(response.data);
       console.log(response.data);
-      history.push("/admin");
+      setTimeout(function () {
+        history.push("/admin");
+      }, 2000);
     } catch (error) {
       console.log("error", error);
       setLoginError(error.toString());

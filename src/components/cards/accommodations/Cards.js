@@ -10,6 +10,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import EditModal from "../../modals/admin/EditModal";
+import DeleteModal from "../../modals/admin/DeleteModal";
 
 export function ItemCard({
   id,
@@ -81,14 +82,17 @@ export function ItemCard({
         )}
       </Link>
       {auth ? (
-        <EditModal
-          id={id}
-          images={images}
-          name={name}
-          price={price}
-          description={description}
-          popular={popular}
-        />
+        <>
+          <EditModal
+            id={id}
+            images={images}
+            name={name}
+            price={price}
+            description={description}
+            popular={popular}
+          />
+          <DeleteModal id={id} />
+        </>
       ) : (
         ""
       )}

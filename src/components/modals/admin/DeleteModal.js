@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import useAxios from "../../hooks/useAxios";
-import { BASE_URL } from "../../constants/Api";
+import useAxios from "../../../hooks/useAxios";
+import { BASE_URL } from "../../../constants/Api";
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import { Trash } from "react-bootstrap-icons";
 
-export function DeleteMessage({ id }) {
+export default function DeleteModal({ id }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,16 +15,14 @@ export function DeleteMessage({ id }) {
 
   const http = useAxios();
   const history = useHistory();
-  const url = BASE_URL + "messages/" + id;
+  const url = BASE_URL + "accommodations/" + id;
 
   async function handleDelete() {
     console.log("request sending");
     try {
       await http.delete(url);
       console.log("deleted id " + id);
-      setTimeout(function () {
-        history.go();
-      }, 3000);
+      history.go(0);
       setShow(false);
     } catch (error) {
       setError(error);
@@ -41,7 +39,10 @@ export function DeleteMessage({ id }) {
           <Modal.Title>Delete</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Are you sure you want to delete this message?</p>
+          <p>
+            Are you sure you want to delete this accommodation? It will be gone
+            forever!
+          </p>
           <Container>
             <Button onClick={handleDelete}>{error ? "Error" : "Yes"}</Button>
           </Container>
