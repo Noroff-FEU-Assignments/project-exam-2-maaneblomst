@@ -9,7 +9,9 @@ import FormError from "../common/FormError";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { EmojiSmile } from "react-bootstrap-icons";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
+import { EmojiSmile, EmojiFrown } from "react-bootstrap-icons";
 import { useHistory } from "react-router";
 
 const url = BASE_URL + "enquiries";
@@ -34,6 +36,7 @@ const schema = yup.object().shape({
 
 export default function EnquiryForm({ id, name }) {
   const [submit, setSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [submissionError, setSubmissionError] = useState(null);
   const history = useHistory();
 
@@ -60,26 +63,50 @@ export default function EnquiryForm({ id, name }) {
   };
 
   async function onSubmit(options) {
+    setLoading(true);
     try {
       const response = await axios.post(url, options);
       setSubmit(true);
       console.log(response.data);
       setTimeout(function () {
         history.go();
-      }, 3000);
+      }, 1800);
     } catch (error) {
-      setSubmissionError(true);
+      setSubmissionError(error.toString());
       console.log(error);
-      console.log(submissionError);
     } finally {
+      setLoading(false);
     }
   }
+
+  if (loading)
+    return (
+      <Container>
+        <Spinner
+          animation="border"
+          role="status"
+          variant="primary"
+          className="d-block"
+        />
+        Loading...
+      </Container>
+    );
+  if (submissionError)
+    return (
+      <DisplayAlert variant="danger">
+        <EmojiFrown className="d-block" />
+        We're so sorry. Something wrong happened.
+        <br />
+        {submissionError}
+      </DisplayAlert>
+    );
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="mt-1">
       {submit && (
         <DisplayAlert variant="success">
-          Thank you! Your form has been submitted. <EmojiSmile />
+          <EmojiSmile className="d-block"></EmojiSmile>
+          Thank you! Your enquiry has been submitted. Closing window..
         </DisplayAlert>
       )}
       <Form.Row>
@@ -179,7 +206,7 @@ export default function EnquiryForm({ id, name }) {
       </Form.Group>
 
       <Button variant="primary" type="submit">
-        {submit ? "Please wait..." : "Send"}
+        Send
       </Button>
     </Form>
   );

@@ -9,8 +9,9 @@ import FormError from "../common/FormError";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { EmojiSmile } from "react-bootstrap-icons";
-import { useHistory } from "react-router";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
+import { EmojiSmile, EmojiFrown } from "react-bootstrap-icons";
 
 const url = BASE_URL + "messages";
 
@@ -31,8 +32,8 @@ const schema = yup.object().shape({
 
 export default function ContactForm() {
   const [submit, setSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [submissionError, setSubmissionError] = useState(null);
-  const history = useHistory();
 
   const {
     register,
@@ -53,20 +54,39 @@ export default function ContactForm() {
     },
   };
   async function onSubmit(options) {
+    setLoading(true);
     try {
       const response = await axios.post(url, options);
-      setSubmit(true);
       console.log(response.data);
-      setTimeout(function () {
-        history.go();
-      }, 3000);
+      setSubmit(true);
     } catch (error) {
-      setSubmissionError(true);
+      setSubmissionError(error.toString());
       console.log(error);
-      console.log(submissionError);
     } finally {
+      setLoading(false);
     }
   }
+  if (loading)
+    return (
+      <Container>
+        <Spinner
+          animation="border"
+          role="status"
+          variant="primary"
+          className="d-block"
+        />
+        Loading...
+      </Container>
+    );
+  if (submissionError)
+    return (
+      <DisplayAlert variant="danger">
+        <EmojiFrown className="d-block" />
+        We're so sorry. Something wrong happened.
+        <br />
+        {submissionError}
+      </DisplayAlert>
+    );
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="mt-1">
       {submit && (
@@ -117,9 +137,15 @@ export default function ContactForm() {
           )}
         </Form.Group>
       </Form.Row>
-      <Button variant="primary" type="submit">
-        {submit ? "Please wait..." : "Send"}
-      </Button>
+      {submit ? (
+        <Button variant="primary" className="d-none">
+          Submit
+        </Button>
+      ) : (
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      )}
     </Form>
   );
 }

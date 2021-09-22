@@ -10,6 +10,10 @@ import Form from "react-bootstrap/Form";
 import FormError from "../common/FormError";
 import FormGroup from "react-bootstrap/FormGroup";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
+import DisplayAlert from "../common/DisplayAlert";
+import { EmojiFrown } from "react-bootstrap-icons";
 
 const url = BASE_URL + "auth/local";
 
@@ -20,6 +24,7 @@ const schema = yup.object().shape({
 
 export default function LoginForm() {
   const [submit, setSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState(null);
   const [, setAuth] = useContext(AuthContext);
 
@@ -47,8 +52,7 @@ export default function LoginForm() {
 
   async function onSubmit(options) {
     setSubmit(true);
-    setLoginError(null);
-
+    setLoading(true);
     try {
       const response = await axios.post(url, options);
       setAuth(response.data);
@@ -60,9 +64,30 @@ export default function LoginForm() {
       console.log("error", error);
       setLoginError(error.toString());
     } finally {
-      setSubmit(false);
+      setLoading(false);
     }
   }
+  if (loading)
+    return (
+      <Container>
+        <Spinner
+          animation="border"
+          role="status"
+          variant="primary"
+          className="d-block"
+        />
+        Loading...
+      </Container>
+    );
+  if (loginError)
+    return (
+      <DisplayAlert variant="danger">
+        <EmojiFrown className="d-block" />
+        Sorry, wrong username or password.
+        <br />
+        {loginError}
+      </DisplayAlert>
+    );
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -72,7 +97,8 @@ export default function LoginForm() {
           <Form.Control
             {...register("identifier")}
             name="identifier"
-            placeholder="Username"
+            placeholder="hello@holidaze.com"
+            autoComplete="username"
           />
           {errors.identifier && (
             <FormError variant="warning">{errors.identifier.message}</FormError>
@@ -81,14 +107,18 @@ export default function LoginForm() {
           <Form.Control
             {...register("password")}
             name="password"
-            placeholder="Password"
+            placeholder="password"
             type="password"
+            autoComplete="current-password"
           />
           {errors.password && (
             <FormError variant="warning">{errors.password.message}</FormError>
           )}
           <Button type="submit" className="mt-3">
-            {submit ? "Logging in..." : "Login"}
+            Login
+          </Button>
+          <Button disabled variant="link" className="secondary,">
+            I forgot my password
           </Button>
         </FormGroup>
       </Form>

@@ -9,8 +9,10 @@ import FormError from "../common/FormError";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { EmojiSmile } from "react-bootstrap-icons";
+import { EmojiSmile, EmojiFrown } from "react-bootstrap-icons";
 import { useHistory } from "react-router";
+import Spinner from "react-bootstrap/Spinner";
+import Container from "react-bootstrap/Container";
 
 // Sett inn reset på popular-checkbox!
 
@@ -36,7 +38,8 @@ const schema = yup.object().shape({
 
 export default function AddNew() {
   const [submit, setSubmit] = useState(false);
-  const [sumbissionError, setSubmissionError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [submissionError, setSubmissionError] = useState(null);
   const [setChecked] = useState(false);
 
   const http = useAxios();
@@ -65,27 +68,49 @@ export default function AddNew() {
     };
 
     formData.append("data", JSON.stringify(body));
-    console.log(formData);
+    setLoading(true);
     try {
       const response = await http.post(url, formData);
       setSubmit(true);
       console.log(response.data);
       setTimeout(function () {
         history.go();
-      }, 3000);
+      }, 1800);
     } catch (error) {
-      setSubmissionError(true);
       console.log(error);
-      console.log(sumbissionError);
+      setSubmissionError(error.toString());
     } finally {
+      setLoading(false);
     }
   }
+
+  if (loading)
+    return (
+      <Container>
+        <Spinner
+          animation="border"
+          role="status"
+          variant="primary"
+          className="d-block"
+        />
+        Loading...
+      </Container>
+    );
+  if (submissionError)
+    return (
+      <DisplayAlert variant="danger">
+        <EmojiFrown className="d-block" />
+        We're so sorry. Something wrong happened.
+        <br />
+        {submissionError}
+      </DisplayAlert>
+    );
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="mt-5">
       {submit && (
         <DisplayAlert variant="success">
           <EmojiSmile className="d-block"></EmojiSmile>
-          Great! Your new accommodation has been added
+          Great! Your new accommodation has been added. Closing window..
         </DisplayAlert>
       )}
       <Form.Row>

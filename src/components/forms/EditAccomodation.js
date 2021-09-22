@@ -10,7 +10,9 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-import { EmojiSmile } from "react-bootstrap-icons";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
+import { EmojiSmile, EmojiFrown } from "react-bootstrap-icons";
 import { useHistory } from "react-router";
 
 // Sett inn reset på popular-checkbox!
@@ -41,8 +43,9 @@ export default function EditAccommodation({
   images,
 }) {
   const [submit, setSubmit] = useState(false);
-  const [sumbissionError, setSubmissionError] = useState(null);
-  const [setChecked] = useState(false);
+  const [submissionError, setSubmissionError] = useState(null);
+  const [, setChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const http = useAxios();
   const history = useHistory();
@@ -72,27 +75,48 @@ export default function EditAccommodation({
     };
 
     formData.append("data", JSON.stringify(body));
-    console.log(formData);
+    setLoading(true);
     try {
       const response = await http.put(url, formData);
       setSubmit(true);
       console.log(response.data);
       setTimeout(function () {
         history.go();
-      }, 3000);
+      }, 2000);
     } catch (error) {
-      setSubmissionError(true);
+      setSubmissionError(error.toString());
       console.log(error);
-      console.log(sumbissionError);
     } finally {
+      setLoading(false);
     }
   }
+  if (loading)
+    return (
+      <Container>
+        <Spinner
+          animation="border"
+          role="status"
+          variant="primary"
+          className="d-block"
+        />
+        Loading...
+      </Container>
+    );
+  if (submissionError)
+    return (
+      <DisplayAlert variant="danger">
+        <EmojiFrown className="d-block" />
+        We're so sorry. Something wrong happened.
+        <br />
+        {submissionError}
+      </DisplayAlert>
+    );
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="mt-5">
       {submit && (
         <DisplayAlert variant="success">
           <EmojiSmile className="d-block"></EmojiSmile>
-          Great! The accommodation was updated.
+          Great! The accommodation was updated. Closing window..
         </DisplayAlert>
       )}
       <Form.Row>
@@ -169,7 +193,7 @@ export default function EditAccommodation({
         )}
       </Form.Group>
       <Button variant="primary" type="submit">
-        {submit ? "Please wait..." : "Update accommodation"}
+        Update
       </Button>
     </Form>
   );
