@@ -66,15 +66,14 @@ export default function ContactForm() {
     }
   }
   if (loading)
-    if (loading)
-      return (
-        <Loading
-          animation="border"
-          variant="primary"
-          classname="d-block"
-          statusText="Loading.."
-        />
-      );
+    return (
+      <Loading
+        animation="border"
+        variant="primary"
+        classname="d-block"
+        statusText="Loading.."
+      />
+    );
   if (submissionError)
     return (
       <SubmissionError

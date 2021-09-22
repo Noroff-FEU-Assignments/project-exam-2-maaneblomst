@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { BASE_URL } from "../../constants/Api";
+import Loading from "../common/formfeedback/Loading";
+import SubmissionError from "../common/formfeedback/SubmissionError";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
-import { Trash, EmojiFrown } from "react-bootstrap-icons";
-import DisplayAlert from "../common/DisplayAlert";
+import { Trash } from "react-bootstrap-icons";
 
 export function DeleteEnquiry({ id }) {
   const [show, setShow] = useState(false);
@@ -26,32 +26,27 @@ export function DeleteEnquiry({ id }) {
       await http.delete(url);
       setTimeout(function () {
         history.go();
-      }, 1800);
-      setShow(false);
+      }, 1000);
     } catch (error) {
       setSubmissionError(error.toString());
     }
   }
   if (loading)
     return (
-      <Container>
-        <Spinner
-          animation="border"
-          role="status"
-          variant="primary"
-          className="d-block"
-        />
-        Deleting..
-      </Container>
+      <Loading
+        animation="border"
+        variant="primary"
+        classname="d-block"
+        statusText="Deleting.."
+      />
     );
   if (submissionError)
     return (
-      <DisplayAlert variant="danger">
-        <EmojiFrown className="d-block" />
-        We're so sorry. Something wrong happened.
-        <br />
-        {submissionError}
-      </DisplayAlert>
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Something went wrong."
+        error={submissionError}
+      />
     );
   return (
     <>

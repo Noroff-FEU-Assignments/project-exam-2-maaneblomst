@@ -9,6 +9,9 @@ import ListGroupItem from "react-bootstrap/ListGroupItem";
 import { Reply } from "react-bootstrap-icons";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
+import Loading from "../common/formfeedback/Loading";
+import SubmissionError from "../common/formfeedback/SubmissionError";
+
 export function EnquiriesList() {
   const [enquiries, setEnquiries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,13 +38,23 @@ export function EnquiriesList() {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <span>Loading enquiries...</span>;
-
+  if (loading)
+    return (
+      <Loading
+        animation="border"
+        variant="primary"
+        classname="d-block"
+        statusText="Loading enquiries.."
+      />
+    );
   if (error)
     return (
-      <div>Sorry, something went wrong. Please contact your administrator.</div>
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Something went wrong."
+        error={error}
+      />
     );
-
   enquiries.sort(function (date1, date2) {
     date1 = new Date(date1);
     date2 = new Date(date2);

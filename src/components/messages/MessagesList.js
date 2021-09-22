@@ -4,6 +4,8 @@ import useAxios from "../../hooks/useAxios";
 import moment from "moment";
 import { BASE_URL } from "../../constants/Api";
 import { DeleteMessage } from "./deleteMessage";
+import Loading from "../common/formfeedback/Loading";
+import SubmissionError from "../common/formfeedback/SubmissionError";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -23,22 +25,31 @@ export function MessagesList() {
         const response = await http.get(url);
         setMessages(response.data);
       } catch (error) {
-        console.log(error);
         setError(error.toString());
       } finally {
         setLoading(false);
       }
     }
     getMessages();
-    console.log(messages);
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <span>Loading messages...</span>;
-
+  if (loading)
+    return (
+      <Loading
+        animation="border"
+        variant="primary"
+        classname="d-block"
+        statusText="Loading messages.."
+      />
+    );
   if (error)
     return (
-      <div>Sorry, something went wrong. Please contact your administrator.</div>
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Something went wrong."
+        error={error}
+      />
     );
 
   messages.sort(function (date1, date2) {
