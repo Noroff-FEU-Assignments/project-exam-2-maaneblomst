@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router";
 import axios from "axios";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -37,7 +36,6 @@ export default function EnquiryForm({ id, name }) {
   const [submit, setSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
   const [submissionError, setSubmissionError] = useState(null);
-  const history = useHistory();
 
   const {
     register,
@@ -68,8 +66,8 @@ export default function EnquiryForm({ id, name }) {
       setSubmit(true);
       console.log(response.data);
       setTimeout(function () {
-        history.go(0);
-      }, 1800);
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       setSubmissionError(error.toString());
       console.log(error);

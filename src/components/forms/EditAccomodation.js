@@ -1,7 +1,6 @@
 import { useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../constants/Api";
@@ -47,7 +46,6 @@ export default function EditAccommodation({
   const [loading, setLoading] = useState(false);
 
   const http = useAxios();
-  const history = useHistory();
   const formData = new FormData();
 
   const url = BASE_URL + "accommodations/" + id;
@@ -80,8 +78,8 @@ export default function EditAccommodation({
       setSubmit(true);
       console.log(response.data);
       setTimeout(function () {
-        history.go(0);
-      }, 2000);
+        window.location.reload();
+      }, 1800);
     } catch (error) {
       setSubmissionError(error.toString());
       console.log(error);

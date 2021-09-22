@@ -58,6 +58,9 @@ export default function ContactForm() {
       const response = await axios.post(url, options);
       console.log(response.data);
       setSubmit(true);
+      setTimeout(function () {
+        window.location.reload();
+      }, 1800);
     } catch (error) {
       setSubmissionError(error.toString());
       console.log(error);

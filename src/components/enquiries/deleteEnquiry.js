@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { BASE_URL } from "../../constants/Api";
 import Loading from "../common/formfeedback/Loading";
@@ -17,7 +16,6 @@ export function DeleteEnquiry({ id }) {
   const [submissionError, setSubmissionError] = useState(null);
 
   const http = useAxios();
-  const history = useHistory();
   const url = BASE_URL + "enquiries/" + id;
 
   async function handleDelete() {
@@ -25,7 +23,7 @@ export function DeleteEnquiry({ id }) {
     try {
       await http.delete(url);
       setTimeout(function () {
-        history.go();
+        window.location.reload();
       }, 1000);
     } catch (error) {
       setSubmissionError(error.toString());

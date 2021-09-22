@@ -1,7 +1,6 @@
 import { useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../constants/Api";
@@ -43,7 +42,6 @@ export default function AddNew() {
 
   const http = useAxios();
   const formData = new FormData();
-  const history = useHistory();
 
   const {
     register,
@@ -73,7 +71,7 @@ export default function AddNew() {
       setSubmit(true);
       console.log(response.data);
       setTimeout(function () {
-        history.go(0);
+        window.location.reload();
       }, 1800);
     } catch (error) {
       console.log(error);
