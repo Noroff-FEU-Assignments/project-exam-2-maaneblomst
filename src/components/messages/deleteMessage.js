@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { BASE_URL } from "../../constants/Api";
 import Loading from "../common/formfeedback/Loading";
@@ -17,7 +16,6 @@ export function DeleteMessage({ id }) {
   const [submissionError, setSubmissionError] = useState(null);
 
   const http = useAxios();
-  const history = useHistory();
   const url = BASE_URL + "messages/" + id;
 
   async function handleDelete() {
