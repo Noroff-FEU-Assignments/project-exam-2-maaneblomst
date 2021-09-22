@@ -7,11 +7,11 @@ import { string } from "prop-types";
 
 export function DividerSection({ title, content, buttonTitle, link }) {
   return (
-    <Row className="bg-light mt-5">
+    <Row className="bg-light d-flex justify-content-center">
       <Col></Col>
       <Col lg={4} md={6} sm={12} xs={12} className="text-center p-5">
         <Heading size="4" content={title} />
-        <p className="text-muted ">{content}</p>
+        <p className="text-muted">{content}</p>
         <Link to={link} className="d-block">
           <Button className="btn-lg" variant="outline-secondary">
             {buttonTitle}

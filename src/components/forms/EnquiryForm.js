@@ -25,8 +25,7 @@ const schema = yup.object().shape({
     .email("Please enter a valid e-mail"),
   accommodation: yup
     .string()
-    .required("Please enter your desired accommodation")
-    .min(5, "Your accommodation must have at least 5 characters"),
+    .required("Please enter your desired accommodation"),
   from_date: yup.date(),
   to_date: yup.date(),
   message: yup.string(),

@@ -9,13 +9,12 @@ function Contact() {
     <>
       <div className="hero-image-contact mb-4"></div>
       <Container className="content-wrapper">
-        <Heading size="1" content="Contact" />
-        <Container className="text-center">
-          <p className="text-muted">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor.
-          </p>
-        </Container>
+        <Row>
+          <Heading size="1" content="Contact" />
+          <Container className="text-center">
+            <p className="text-muted">We'd love to hear from you!</p>
+          </Container>
+        </Row>
         <Row>
           <Col />
           <Col xs={12} sm={8} md={6} lg={6}>
@@ -25,6 +24,7 @@ function Contact() {
           </Col>
           <Col />
         </Row>
+        <Container className="text-center spacer"></Container>
       </Container>
     </>
   );

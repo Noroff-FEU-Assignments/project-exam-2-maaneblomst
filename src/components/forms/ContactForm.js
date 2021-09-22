@@ -10,6 +10,7 @@ import SubmissionError from "../common/formfeedback/SubmissionError";
 import Success from "../common/formfeedback/Success";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 const url = BASE_URL + "messages";
@@ -86,7 +87,7 @@ export default function ContactForm() {
       />
     );
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} className="mt-1">
+    <Form onSubmit={handleSubmit(onSubmit)} className="mt-1 mb-3">
       {submit && (
         <Success
           classname="d-block"
@@ -142,15 +143,17 @@ export default function ContactForm() {
           )}
         </Form.Group>
       </Form.Row>
-      {submit ? (
-        <Button variant="primary" className="d-none">
-          Submit
-        </Button>
-      ) : (
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      )}
+      <Container className="text-center">
+        {submit ? (
+          <Button variant="primary" className="d-none mb-3 mt-3">
+            Submit
+          </Button>
+        ) : (
+          <Button variant="primary" type="submit" className="mb-3 mt-3">
+            Submit
+          </Button>
+        )}
+      </Container>
     </Form>
   );
 }
