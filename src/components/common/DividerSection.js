@@ -3,6 +3,7 @@ import Heading from "./Heading";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
+import { string } from "prop-types";
 
 export function DividerSection({ title, content, buttonTitle, link }) {
   return (
@@ -21,3 +22,10 @@ export function DividerSection({ title, content, buttonTitle, link }) {
     </Row>
   );
 }
+
+DividerSection.propTypes = {
+  title: string.isRequired,
+  content: string.isRequired,
+  buttonTitle: string,
+  link: string,
+};

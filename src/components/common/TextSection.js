@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import { string } from "prop-types";
 
 export function TextSectionLeft({ title, content, image }) {
   return (
@@ -38,3 +39,15 @@ export function TextSectionRight({ title, content, image }) {
     </>
   );
 }
+
+TextSectionRight.propTypes = {
+  title: string.isRequired,
+  content: string.isRequired,
+  image: string.isRequired,
+};
+
+TextSectionLeft.propTypes = {
+  title: string.isRequired,
+  content: string.isRequired,
+  image: string.isRequired,
+};
