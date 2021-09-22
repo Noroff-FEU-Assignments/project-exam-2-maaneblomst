@@ -10,7 +10,7 @@ export function TextSectionLeft({ title, content, image }) {
     <>
       <Col xs={12} sm={12} md={6} lg={6}>
         <Heading size="3" content={title} />
-        <p className="mt-4 p-2">{content}</p>
+        <p>{content}</p>
         <Container className="text-center">
           <Button variant="link">Read more</Button>
         </Container>
@@ -30,7 +30,7 @@ export function TextSectionRight({ title, content, image }) {
       </Col>
       <Col xs={12} sm={6} md={6} lg={6}>
         <Heading size="3" content={title} />
-        <p className="mt-4 p-2">{content}</p>
+        <p>{content}</p>
         <Container className="text-center">
           <Button variant="link">Read more</Button>
         </Container>

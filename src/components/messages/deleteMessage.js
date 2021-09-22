@@ -25,7 +25,7 @@ export function DeleteMessage({ id }) {
     try {
       await http.delete(url);
       setTimeout(function () {
-        history.go();
+        window.location.reload();
       }, 1000);
       setShow(false);
     } catch (error) {
