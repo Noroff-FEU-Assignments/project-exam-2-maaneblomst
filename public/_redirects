@@ -1,3 +1,7 @@
 /* /index.html 200
 
-/accommodations/:id  /accommodations/:id
+/accommodations/:id /accommodations/:id
+
+/messages /messages
+
+/enquiries /enquiries
