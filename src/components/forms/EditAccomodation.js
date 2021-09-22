@@ -80,7 +80,7 @@ export default function EditAccommodation({
       setSubmit(true);
       console.log(response.data);
       setTimeout(function () {
-        history.go();
+        history.go(0);
       }, 2000);
     } catch (error) {
       setSubmissionError(error.toString());

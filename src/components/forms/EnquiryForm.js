@@ -68,7 +68,7 @@ export default function EnquiryForm({ id, name }) {
       setSubmit(true);
       console.log(response.data);
       setTimeout(function () {
-        history.go();
+        history.go(0);
       }, 1800);
     } catch (error) {
       setSubmissionError(error.toString());
