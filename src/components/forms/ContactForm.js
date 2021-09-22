@@ -5,13 +5,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../constants/Api";
 import DisplayAlert from "../common/DisplayAlert";
-import FormError from "../common/FormError";
+import Loading from "../common/formfeedback/Loading";
+import SubmissionError from "../common/formfeedback/SubmissionError";
+import Success from "../common/formfeedback/Success";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Spinner from "react-bootstrap/Spinner";
-import { EmojiSmile, EmojiFrown } from "react-bootstrap-icons";
 
 const url = BASE_URL + "messages";
 
@@ -67,32 +66,30 @@ export default function ContactForm() {
     }
   }
   if (loading)
-    return (
-      <Container>
-        <Spinner
+    if (loading)
+      return (
+        <Loading
           animation="border"
-          role="status"
           variant="primary"
-          className="d-block"
+          classname="d-block"
+          statusText="Loading.."
         />
-        Loading...
-      </Container>
-    );
+      );
   if (submissionError)
     return (
-      <DisplayAlert variant="danger">
-        <EmojiFrown className="d-block" />
-        We're so sorry. Something wrong happened.
-        <br />
-        {submissionError}
-      </DisplayAlert>
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Something went wrong."
+        error={submissionError}
+      />
     );
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="mt-1">
       {submit && (
-        <DisplayAlert variant="success">
-          Thank you! Your form has been submitted. <EmojiSmile />
-        </DisplayAlert>
+        <Success
+          classname="d-block"
+          displayText="Thank you! Your message has been sent. We'll get back to you as soon as we can."
+        />
       )}
       <Form.Row className="p-2">
         <Form.Group as={Col} controlId="formFirstName" className="d-sm-block">
@@ -103,7 +100,9 @@ export default function ContactForm() {
             {...register("name", { required: true })}
           />
           {errors.firstName && (
-            <FormError variant="warning">{errors.firstName.message}</FormError>
+            <DisplayAlert variant="warning">
+              {errors.firstName.message}
+            </DisplayAlert>
           )}
         </Form.Group>
       </Form.Row>
@@ -120,7 +119,9 @@ export default function ContactForm() {
             )}
           />
           {errors.email && (
-            <FormError variant="warning">{errors.email.message}</FormError>
+            <DisplayAlert variant="warning">
+              {errors.email.message}
+            </DisplayAlert>
           )}
         </Form.Group>
       </Form.Row>
@@ -133,7 +134,9 @@ export default function ContactForm() {
             {...register("message", { required: true })}
           ></Form.Control>
           {errors.message && (
-            <FormError variant="warning">{errors.message.message}</FormError>
+            <DisplayAlert variant="warning">
+              {errors.message.message}
+            </DisplayAlert>
           )}
         </Form.Group>
       </Form.Row>

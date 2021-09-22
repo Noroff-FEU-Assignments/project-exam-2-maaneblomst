@@ -2,18 +2,16 @@ import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { BASE_URL } from "../../constants/Api";
-import AuthContext from "../../context/AuthContext";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { BASE_URL } from "../../constants/Api";
+import AuthContext from "../../context/AuthContext";
+import DisplayAlert from "../common/DisplayAlert";
+import Loading from "../common/formfeedback/Loading";
+import SubmissionError from "../common/formfeedback/SubmissionError";
 import Form from "react-bootstrap/Form";
-import FormError from "../common/FormError";
 import FormGroup from "react-bootstrap/FormGroup";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Spinner from "react-bootstrap/Spinner";
-import DisplayAlert from "../common/DisplayAlert";
-import { EmojiFrown } from "react-bootstrap-icons";
 
 const url = BASE_URL + "auth/local";
 
@@ -64,34 +62,28 @@ export default function LoginForm() {
       console.log("error", error);
       setLoginError(error.toString());
     } finally {
-      setLoading(false);
     }
   }
   if (loading)
     return (
-      <Container>
-        <Spinner
-          animation="border"
-          role="status"
-          variant="primary"
-          className="d-block"
-        />
-        Loading...
-      </Container>
+      <Loading
+        animation="border"
+        variant="primary"
+        classname="d-block"
+        statusText="Loading.."
+      />
     );
   if (loginError)
     return (
-      <DisplayAlert variant="danger">
-        <EmojiFrown className="d-block" />
-        Sorry, wrong username or password.
-        <br />
-        {loginError}
-      </DisplayAlert>
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Did you input the right username and password?"
+        error={loginError}
+      />
     );
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        {loginError && <FormError variant="danger">{loginError}</FormError>}
         <FormGroup disabled={submit}>
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -101,7 +93,9 @@ export default function LoginForm() {
             autoComplete="username"
           />
           {errors.identifier && (
-            <FormError variant="warning">{errors.identifier.message}</FormError>
+            <DisplayAlert variant="warning">
+              {errors.identifier.message}
+            </DisplayAlert>
           )}
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -112,7 +106,9 @@ export default function LoginForm() {
             autoComplete="current-password"
           />
           {errors.password && (
-            <FormError variant="warning">{errors.password.message}</FormError>
+            <DisplayAlert variant="warning">
+              {errors.password.message}
+            </DisplayAlert>
           )}
           <Button type="submit" className="mt-3">
             Login

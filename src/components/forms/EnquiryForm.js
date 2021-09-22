@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router";
 import axios from "axios";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../constants/Api";
 import DisplayAlert from "../common/DisplayAlert";
-import FormError from "../common/FormError";
+import Loading from "../common/formfeedback/Loading";
+import SubmissionError from "../common/formfeedback/SubmissionError";
+import Success from "../common/formfeedback/Success";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Spinner from "react-bootstrap/Spinner";
-import { EmojiSmile, EmojiFrown } from "react-bootstrap-icons";
-import { useHistory } from "react-router";
 
 const url = BASE_URL + "enquiries";
 
@@ -78,36 +77,30 @@ export default function EnquiryForm({ id, name }) {
       setLoading(false);
     }
   }
-
   if (loading)
     return (
-      <Container>
-        <Spinner
-          animation="border"
-          role="status"
-          variant="primary"
-          className="d-block"
-        />
-        Loading...
-      </Container>
+      <Loading
+        animation="border"
+        variant="primary"
+        classname="d-block"
+        statusText="Loading.."
+      />
     );
   if (submissionError)
     return (
-      <DisplayAlert variant="danger">
-        <EmojiFrown className="d-block" />
-        We're so sorry. Something wrong happened.
-        <br />
-        {submissionError}
-      </DisplayAlert>
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Something went wrong."
+        error={submissionError}
+      />
     );
-
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="mt-1">
       {submit && (
-        <DisplayAlert variant="success">
-          <EmojiSmile className="d-block"></EmojiSmile>
-          Thank you! Your enquiry has been submitted. Closing window..
-        </DisplayAlert>
+        <Success
+          classname="d-block"
+          displayText="Thank you! Your enquiry has been sent. We'll get back to you as soon as we can. Closing window.."
+        />
       )}
       <Form.Row>
         <Form.Group as={Col} controlId="formName" className="d-sm-block">
@@ -118,7 +111,7 @@ export default function EnquiryForm({ id, name }) {
             {...register("name", { required: true })}
           />
           {errors.name && (
-            <FormError variant="warning">{errors.name.message}</FormError>
+            <DisplayAlert variant="warning">{errors.name.message}</DisplayAlert>
           )}
         </Form.Group>
       </Form.Row>
@@ -135,7 +128,9 @@ export default function EnquiryForm({ id, name }) {
             )}
           />
           {errors.email && (
-            <FormError variant="warning">{errors.email.message}</FormError>
+            <DisplayAlert variant="warning">
+              {errors.email.message}
+            </DisplayAlert>
           )}
         </Form.Group>
       </Form.Row>
@@ -162,9 +157,9 @@ export default function EnquiryForm({ id, name }) {
               {...register("accommodation", { required: true })}
             />
             {errors.accommodation && (
-              <FormError variant="warning">
+              <DisplayAlert variant="warning">
                 {errors.accommodation.message}
-              </FormError>
+              </DisplayAlert>
             )}
           </Form.Group>
         )}
@@ -178,7 +173,9 @@ export default function EnquiryForm({ id, name }) {
             {...register("date_from", { required: true })}
           ></Form.Control>
           {errors.fromDate && (
-            <FormError variant="warning">{errors.fromDate.message}</FormError>
+            <DisplayAlert variant="warning">
+              {errors.fromDate.message}
+            </DisplayAlert>
           )}
         </Form.Group>
         <Form.Group>
@@ -189,7 +186,9 @@ export default function EnquiryForm({ id, name }) {
             {...register("date_to", { required: true })}
           ></Form.Control>
           {errors.toDate && (
-            <FormError variant="warning">{errors.toDate.message}</FormError>
+            <DisplayAlert variant="warning">
+              {errors.toDate.message}
+            </DisplayAlert>
           )}
         </Form.Group>
       </Form.Row>
@@ -201,7 +200,9 @@ export default function EnquiryForm({ id, name }) {
           {...register("message", { required: true })}
         ></Form.Control>
         {errors.message && (
-          <FormError variant="warning">{errors.message.message}</FormError>
+          <DisplayAlert variant="warning">
+            {errors.message.message}
+          </DisplayAlert>
         )}
       </Form.Group>
 

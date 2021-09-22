@@ -1,19 +1,18 @@
 import { useState } from "react";
 import useAxios from "../../hooks/useAxios";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../constants/Api";
 import DisplayAlert from "../common/DisplayAlert";
-import FormError from "../common/FormError";
+import Loading from "../common/formfeedback/Loading";
+import SubmissionError from "../common/formfeedback/SubmissionError";
+import Success from "../common/formfeedback/Success";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-import Container from "react-bootstrap/Container";
-import Spinner from "react-bootstrap/Spinner";
-import { EmojiSmile, EmojiFrown } from "react-bootstrap-icons";
-import { useHistory } from "react-router";
 
 // Sett inn reset på popular-checkbox!
 
@@ -92,32 +91,28 @@ export default function EditAccommodation({
   }
   if (loading)
     return (
-      <Container>
-        <Spinner
-          animation="border"
-          role="status"
-          variant="primary"
-          className="d-block"
-        />
-        Loading...
-      </Container>
+      <Loading
+        animation="border"
+        variant="primary"
+        classname="d-block"
+        statusText="Loading.."
+      />
     );
   if (submissionError)
     return (
-      <DisplayAlert variant="danger">
-        <EmojiFrown className="d-block" />
-        We're so sorry. Something wrong happened.
-        <br />
-        {submissionError}
-      </DisplayAlert>
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Something went wrong."
+        error={submissionError}
+      />
     );
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="mt-5">
       {submit && (
-        <DisplayAlert variant="success">
-          <EmojiSmile className="d-block"></EmojiSmile>
-          Great! The accommodation was updated. Closing window..
-        </DisplayAlert>
+        <Success
+          classname="d-block"
+          displayText="Great! Your accommodation has been updated. Closing window.."
+        />
       )}
       <Form.Row>
         <Form.Group as={Col} controlId="formName" className="d-sm-block">
@@ -134,7 +129,7 @@ export default function EditAccommodation({
             {...register("name", { required: true })}
           />
           {errors.name && (
-            <FormError variant="warning">{errors.name.message}</FormError>
+            <DisplayAlert variant="warning">{errors.name.message}</DisplayAlert>
           )}
         </Form.Group>
       </Form.Row>
@@ -149,9 +144,9 @@ export default function EditAccommodation({
             {...register("description", { required: true })}
           />
           {errors.description && (
-            <FormError variant="warning">
+            <DisplayAlert variant="warning">
               {errors.description.message}
-            </FormError>
+            </DisplayAlert>
           )}
         </Form.Group>
       </Form.Row>
@@ -168,7 +163,9 @@ export default function EditAccommodation({
             {...register("price", { required: true })}
           />
           {errors.price && (
-            <FormError variant="warning">{errors.price.message}</FormError>
+            <DisplayAlert variant="warning">
+              {errors.price.message}
+            </DisplayAlert>
           )}
         </Form.Group>
       </Form.Row>
@@ -182,14 +179,16 @@ export default function EditAccommodation({
           {...register("popular", { required: true })}
         ></Form.Check>
         {errors.popular && (
-          <FormError variant="warning">{errors.popular.message}</FormError>
+          <DisplayAlert variant="warning">
+            {errors.popular.message}
+          </DisplayAlert>
         )}
       </Form.Group>
       <Image fluid src={images} className="mb-2" />
       <Form.Group controlId="formFileMultiple" className="mb-3">
         <Form.File multiple name="images" {...register("files.images")} />
         {errors.images && (
-          <FormError variant="warning">{errors.images.message}</FormError>
+          <DisplayAlert variant="warning">{errors.images.message}</DisplayAlert>
         )}
       </Form.Group>
       <Button variant="primary" type="submit">
