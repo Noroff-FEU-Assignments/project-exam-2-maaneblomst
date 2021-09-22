@@ -21,6 +21,9 @@ function Admin() {
         />
         <DashboardCard title="Accommodations" link="overview" icon={folder} />
       </Row>
+      <Row>
+        <Container style={{ height: "250px" }} />
+      </Row>
     </Container>
   );
 }

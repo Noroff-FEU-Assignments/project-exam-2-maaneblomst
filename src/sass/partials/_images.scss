@@ -43,3 +43,10 @@
     padding-top: 10em;
   }
 }
+
+@media only screen and (min-width: 861px) {
+  .carousel {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}

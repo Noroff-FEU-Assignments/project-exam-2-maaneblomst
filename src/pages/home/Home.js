@@ -30,12 +30,12 @@ function Home() {
       </Row>
       <TextSectionRight
         title="Happy Holidaze!"
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        content="Holidaze offers custom made tours all over the beautiful west coast of Norway, and we would love to guide you or your group on unforgettable experiences. Our local guides (most of them born and raised in Bergen), have used their expertise to handpick the best, authentic accommodations Bergen has to offer."
         image={HappyHolidaze}
       />
       <DividerSection
         title="Need something special?"
-        content="Holidaze offers custom made tours all over the beautiful west coast of Norway, and we would love to guide you or your group on unforgettable experiences."
+        content="We'd love to help you plan your trip to Bergen"
         buttonTitle="Get in Touch"
         link="/contact"
       />

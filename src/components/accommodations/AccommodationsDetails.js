@@ -55,7 +55,7 @@ export default function AccommodationsDetails() {
 
   return (
     <Container className="content-wrapper" key={accId}>
-      <Container fluid>
+      <Container fluid className="mb-4">
         <Carousel>
           {accommodation.images.map((image) => (
             <Carousel.Item key={image.name} align="center">
@@ -71,60 +71,52 @@ export default function AccommodationsDetails() {
           ))}
         </Carousel>
       </Container>
-      <Row className="pt-2 mb-2">
-        <Col>
-          <h1>{name}</h1>
+      <Row className="mt-4 mb-2">
+        <Col md={6} lg={6}>
+          <Container fluid>
+            <Heading size="1" display="text-left" content={name} />
+          </Container>
         </Col>
-        <Col>
-          <span className="ml-2 p-3 mr-2">
-            FROM
-            <span className="text-primary font-weight-bold h4 p-2">
-              {price}
+        <Col md={4} lg={2}>
+          <Container fluid className="text-center">
+            <span className="ml-2 p-3 mr-2">
+              FROM
+              <span className="text-primary font-weight-bold h4 p-2">
+                {price}
+              </span>
+              NOK
             </span>
-            NOK
-          </span>
-          <EnquiryModal
-            id={accId}
-            name={name}
-            price={price}
-            images={images}
-            facilities={facilities}
-          />
+            <EnquiryModal
+              id={accId}
+              name={name}
+              price={price}
+              images={images}
+              facilities={facilities}
+            />
+          </Container>
         </Col>
+        <Col />
       </Row>
-      <Row>
-        <Col>
-          <Container>
-            <Heading size="4" content="Description" />
+      <Row className="mb-4">
+        <Col lg={8}>
+          <Container fluid>
+            <Heading size="4" display="fw-bold" content="Description" />
             <p>{desc}</p>
-            <Heading size="4" content="Facilities" />
+          </Container>
+        </Col>
+        <Col lg={2}>
+          <Container fluid className="mt-4">
+            <Heading size="4" display="fw-bold" content="Facilities" />
             {facilities.map((facility) => (
               <div key={facility.id}>{facility.facility_name}</div>
             ))}
           </Container>
         </Col>
-      </Row>
-      <Row className="text-center">
-        <Col>
-          <span className="ml-2 p-3 mr-2">
-            FROM
-            <span className="text-primary font-weight-bold h4 p-2">
-              {price}
-            </span>
-            NOK
-          </span>
-          <EnquiryModal
-            id={accId}
-            name={name}
-            price={price}
-            images={images}
-            facilities={facilities}
-          />
-        </Col>
+        <Col />
       </Row>
       <DividerSection
         title="Do you have questions?"
-        content="Lorem ipsum dolor"
+        content="We'd love to help you plan your trip"
         buttonTitle="Get in Touch"
         link="/contact"
       />

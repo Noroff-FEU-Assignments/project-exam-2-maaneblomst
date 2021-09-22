@@ -9,7 +9,7 @@ import { string } from "prop-types";
 export function TextSectionLeft({ title, content, image }) {
   return (
     <Row className="d-flex justify-content-center">
-      <Col xs={12} sm={6} md={6} lg={6} className="mt-5">
+      <Col xs={12} sm={12} md={6} lg={6}>
         <Heading size="3" content={title} />
         <Container>
           <p>{content}</p>
@@ -18,7 +18,7 @@ export function TextSectionLeft({ title, content, image }) {
           <Button variant="link">Read more</Button>
         </Container>
       </Col>
-      <Col xs={12} sm={12} md={6} lg={6}>
+      <Col xs={12} sm={6} md={6} lg={6}>
         <Image fluid src={image} />
       </Col>
     </Row>

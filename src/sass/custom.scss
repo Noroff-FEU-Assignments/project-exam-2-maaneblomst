@@ -4,10 +4,9 @@ $enable-gradients: true;
 $primary: #d9704a;
 $light: #f2f2f3;
 $dark: #2b251c;
-$body-color: #333;
+$body-color: #2b251c;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "./partials/fonts";
 @import "./partials/layout";
 @import "./partials/images";
-@import "./partials/usability";

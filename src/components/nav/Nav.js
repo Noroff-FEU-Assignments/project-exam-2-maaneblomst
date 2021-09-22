@@ -8,13 +8,13 @@ import logo from "../../images/logos/Holidaze-logo.png";
 
 function Navigation() {
   return (
-    <Navbar collapseOnSelect bg="white" expand="lg" className="mb-4">
+    <Navbar collapseOnSelect bg="white" expand="lg" className="mb-4 p-2">
       <Container>
         <Link to="/">
           <Navbar.Brand>
             <Image
               src={logo}
-              className="d-inline-block"
+              className="d-inline-block mt-1"
               width="150"
               alt="Holidaze logo"
             />
