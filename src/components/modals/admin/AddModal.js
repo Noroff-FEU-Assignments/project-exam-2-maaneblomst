@@ -14,9 +14,9 @@ export default function AddModal() {
     <>
       <Container>
         <Button
+          variant="outline-primary"
           tooltip="Add new accommodation"
           onClick={handleShow}
-          className="bg-primary text-white"
         >
           <Plus size={30} />
           Add new

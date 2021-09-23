@@ -19,7 +19,7 @@ export default function EnquiryModal({
   return (
     <>
       <Button
-        tooltip="Contact us"
+        tooltip="Book Now"
         rotate={true}
         onClick={handleShow}
         className="bg-primary"

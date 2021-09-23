@@ -145,11 +145,11 @@ export default function ContactForm() {
       </Form.Row>
       <Container className="text-center">
         {submit ? (
-          <Button variant="primary" className="d-none mb-3 mt-3">
+          <Button variant="outline-primary" className="d-none mb-3 mt-3">
             Submit
           </Button>
         ) : (
-          <Button variant="primary" type="submit" className="mb-3 mt-3">
+          <Button variant="outline-primary" type="submit" className="mb-3 mt-3">
             Submit
           </Button>
         )}

@@ -203,7 +203,7 @@ export default function EnquiryForm({ id, name }) {
         )}
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="outline-primary" type="submit">
         Send
       </Button>
     </Form>

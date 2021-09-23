@@ -189,7 +189,7 @@ export default function EditAccommodation({
           <DisplayAlert variant="warning">{errors.images.message}</DisplayAlert>
         )}
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="outline-primary" type="submit">
         Update
       </Button>
     </Form>

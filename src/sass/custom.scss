@@ -1,10 +1,13 @@
+//Custom Bootstrap variables
 $enable-shadows: true;
 $enable-gradients: true;
-
 $primary: #d9704a;
 $light: #f2f2f3;
 $dark: #2b251c;
 $body-color: #2b251c;
+$h1-font-size: 36px;
+$h2-font-size: 30px;
+$h3-font-size: 26px;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "./partials/fonts";

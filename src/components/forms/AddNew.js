@@ -174,7 +174,7 @@ export default function AddNew() {
           <DisplayAlert variant="warning">{errors.images.message}</DisplayAlert>
         )}
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="outline-primary" type="submit">
         {submit ? "Please wait..." : "Add"}
       </Button>
     </Form>

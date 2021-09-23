@@ -110,7 +110,7 @@ export default function LoginForm() {
               {errors.password.message}
             </DisplayAlert>
           )}
-          <Button type="submit" className="mt-3">
+          <Button type="submit" variant="outline-primary" className="mt-3">
             Login
           </Button>
           <Button disabled variant="link" className="secondary,">
