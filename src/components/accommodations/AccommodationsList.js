@@ -58,7 +58,9 @@ export function AccommodationsList() {
             images={
               object.images[0] == null ? PlaceholderImage : object.images[0].url
             }
-            altText={object.images[0].alternativeText}
+            altText={
+              object.images[0] == null ? "" : object.images[0].alternativeText
+            }
             facilities={object.facilities}
             description={object.description}
             popular={object.popular}

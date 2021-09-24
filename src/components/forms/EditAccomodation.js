@@ -16,18 +16,9 @@ import Image from "react-bootstrap/Image";
 // Sett inn reset på popular-checkbox!
 
 const schema = yup.object().shape({
-  name: yup
-    .string()
-    .required("Please enter a new name for your accommodation")
-    .min(1, "The name must be at least 2 characters."),
-  description: yup
-    .string()
-    .required("Please add a description")
-    .min(5, "Please enter a description of at least 5 words"),
-  price: yup
-    .number()
-    .positive("Must be more than 0")
-    .required("This field is required"),
+  name: yup.string(),
+  description: yup.string(),
+  price: yup.number(),
   popular: yup.boolean().oneOf([true, false]),
   images: yup.mixed(),
 });
@@ -124,7 +115,7 @@ export default function EditAccommodation({
           <Form.Control
             type="name"
             placeholder="Enter new name"
-            {...register("name", { required: true })}
+            {...register("name")}
           />
           {errors.name && (
             <DisplayAlert variant="warning">{errors.name.message}</DisplayAlert>
@@ -139,7 +130,7 @@ export default function EditAccommodation({
             type="textarea"
             placeholder="Enter new description"
             style={{ height: "100px" }}
-            {...register("description", { required: true })}
+            {...register("description")}
           />
           {errors.description && (
             <DisplayAlert variant="warning">
@@ -158,7 +149,7 @@ export default function EditAccommodation({
           <Form.Control
             type="number"
             placeholder="0.00"
-            {...register("price", { required: true })}
+            {...register("price")}
           />
           {errors.price && (
             <DisplayAlert variant="warning">
@@ -171,10 +162,9 @@ export default function EditAccommodation({
         <Form.Check
           id="popular"
           label="Popular"
-          value={popular}
-          defaultChecked={false}
+          defaultChecked={popular}
           onChange={() => setChecked(true)}
-          {...register("popular", { required: true })}
+          {...register("popular")}
         ></Form.Check>
         {errors.popular && (
           <DisplayAlert variant="warning">

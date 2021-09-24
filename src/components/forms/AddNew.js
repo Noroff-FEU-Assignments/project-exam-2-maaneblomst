@@ -32,6 +32,7 @@ const schema = yup.object().shape({
   popular: yup.boolean().oneOf([true, false]),
   images: yup.mixed(),
   facilities: yup.string(),
+  alternativeText: yup.string(),
 });
 
 export default function AddNew() {
@@ -50,7 +51,7 @@ export default function AddNew() {
   } = useForm({ resolver: yupResolver(schema) });
 
   async function onSubmit(data) {
-    const { name, popular, price, description, files } = data;
+    const { name, popular, price, description, files, alternativeText } = data;
     const uploadFiles = Array.from(files.images);
 
     uploadFiles.forEach((image) =>
@@ -62,6 +63,7 @@ export default function AddNew() {
       description,
       price,
       popular,
+      alternativeText,
     };
 
     formData.append("data", JSON.stringify(body));
@@ -173,8 +175,19 @@ export default function AddNew() {
         {errors.images && (
           <DisplayAlert variant="warning">{errors.images.message}</DisplayAlert>
         )}
+        <Form.Label>Alternative text:</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter alternative text for the image"
+          {...register("alternativeText")}
+        />
+        {errors.altText && (
+          <DisplayAlert variant="warning">
+            {errors.altText.message}
+          </DisplayAlert>
+        )}
       </Form.Group>
-      <Button variant="outline-primary" type="submit">
+      <Button variant="outline-primary" type="submit" className="mt-2">
         {submit ? "Please wait..." : "Add"}
       </Button>
     </Form>
