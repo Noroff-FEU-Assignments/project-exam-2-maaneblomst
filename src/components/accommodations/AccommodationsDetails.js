@@ -66,7 +66,6 @@ export default function AccommodationsDetails() {
     accommodation.images[0] == null
       ? PlaceholderImage
       : accommodation.images[0].url;
-  const altText = accommodation.images[0].alternativeText;
   const facilities = accommodation.facilities;
 
   return (
@@ -77,8 +76,8 @@ export default function AccommodationsDetails() {
             <Carousel.Item key={image.name} align="center">
               <Image
                 className="d-block w-100 rounded"
-                src={images}
-                alt={altText}
+                src={image.url}
+                alt={image.alternativeText}
               />
               <Carousel.Caption>
                 <p>{image.caption}</p>
