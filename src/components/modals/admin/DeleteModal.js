@@ -25,7 +25,7 @@ export default function DeleteModal({ id }) {
     try {
       await http.delete(url);
       setTimeout(function () {
-        history.go(0);
+        window.location.reload();
       }, 1800);
       setShow(false);
     } catch (error) {
