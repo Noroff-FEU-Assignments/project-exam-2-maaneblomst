@@ -16,7 +16,6 @@ function SearchBar() {
       try {
         const response = await axios.get(url);
         setAccommodations(response.data);
-        console.log(response);
       } catch (error) {
         console.log(error);
         setError(error.toString());
@@ -36,15 +35,11 @@ function SearchBar() {
     console.log(string, results);
   };
 
-  const handleOnHover = (result) => {
-    // the item hovered
-    console.log(result);
-  };
+  const handleOnHover = (result) => {};
 
   const handleOnSelect = (item) => {
     let id = item.id;
     history.push("/accommodations/" + id);
-    console.log(item);
   };
 
   const handleOnFocus = () => {};
