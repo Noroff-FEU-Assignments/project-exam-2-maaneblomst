@@ -18,6 +18,8 @@ export default function ContactModal() {
           rotate={true}
           onClick={handleShow}
           className="bg-primary"
+          role="button"
+          aria-label="contact button"
         >
           <Envelope size={30} />
         </Button>

@@ -3,18 +3,19 @@ import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
 import { useHover } from "../../../hooks/useHover";
 import PlaceholderImage from "../../../images/placeholder/accommodation-loading.png";
+import EditModal from "../../modals/admin/EditModal";
+import DeleteModal from "../../modals/admin/DeleteModal";
 import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import EditModal from "../../modals/admin/EditModal";
-import DeleteModal from "../../modals/admin/DeleteModal";
 
 export function ItemCard({
   id,
   images,
+  altText,
   name,
   price,
   description,
@@ -47,7 +48,7 @@ export function ItemCard({
       >
         {isHovered ? (
           <Card className="card-hover w-100 rounded shadow text-dark">
-            <Card.Img src={images} />
+            <Card.Img src={images} alt={altText} />
             <Card.Body>
               <Card.Title>{name}</Card.Title>
               <Container className="p-1">

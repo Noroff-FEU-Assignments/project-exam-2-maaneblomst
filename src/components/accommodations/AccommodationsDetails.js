@@ -7,6 +7,8 @@ import EnquiryModal from "../modals/EnquiryModal";
 import { PopularObjects } from "./PopularObjects";
 import { DividerSection } from "../common/DividerSection";
 import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
+import Loading from "../common/formfeedback/Loading";
+import SubmissionError from "../common/formfeedback/SubmissionError";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -27,7 +29,6 @@ export default function AccommodationsDetails() {
       try {
         const response = await axios.get(url);
         setAccommodation(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log(error);
         setLoadError(error.toString());
@@ -39,9 +40,23 @@ export default function AccommodationsDetails() {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <span>Loading...</span>;
-
-  if (loadError) return <div>Error loading</div>;
+  if (loading)
+    return (
+      <Loading
+        animation="border"
+        variant="primary"
+        classname="d-block"
+        statusText="Loading.."
+      />
+    );
+  if (loadError)
+    return (
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Something went wrong loading the accommodations."
+        error={loadError}
+      />
+    );
 
   const name = accommodation.name;
   const accId = accommodation.id;
@@ -51,6 +66,7 @@ export default function AccommodationsDetails() {
     accommodation.images[0] == null
       ? PlaceholderImage
       : accommodation.images[0].url;
+  const altText = accommodation.images[0].alternativeText;
   const facilities = accommodation.facilities;
 
   return (
@@ -61,8 +77,8 @@ export default function AccommodationsDetails() {
             <Carousel.Item key={image.name} align="center">
               <Image
                 className="d-block w-100 rounded"
-                src={image.url}
-                alt={image.alternativeText}
+                src={images}
+                alt={altText}
               />
               <Carousel.Caption>
                 <p>{image.caption}</p>

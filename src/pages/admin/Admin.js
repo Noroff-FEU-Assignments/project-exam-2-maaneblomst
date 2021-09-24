@@ -10,21 +10,23 @@ function Admin() {
   let folder = <Folder size={40} />;
 
   return (
-    <Container className="content-wrapper">
-      <Heading size="1" content="Dashboard" />
-      <Row className="m-5">
-        <DashboardCard title="Messages" link="messages" icon={envelope} />
-        <DashboardCard
-          title="Enquiries"
-          link="adminenquiries"
-          icon={calendar}
-        />
-        <DashboardCard title="Accommodations" link="overview" icon={folder} />
-      </Row>
-      <Row>
-        <Container style={{ height: "250px" }} />
-      </Row>
-    </Container>
+    <main>
+      <Container className="content-wrapper">
+        <Heading size="1" content="Dashboard" />
+        <Row className="m-5">
+          <DashboardCard title="Messages" link="messages" icon={envelope} />
+          <DashboardCard
+            title="Enquiries"
+            link="adminenquiries"
+            icon={calendar}
+          />
+          <DashboardCard title="Accommodations" link="overview" icon={folder} />
+        </Row>
+        <Row>
+          <Container style={{ height: "250px" }} />
+        </Row>
+      </Container>
+    </main>
   );
 }
 

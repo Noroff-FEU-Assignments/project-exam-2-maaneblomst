@@ -7,18 +7,20 @@ import ListGroup from "react-bootstrap/ListGroup";
 
 function AdminEnquiries() {
   return (
-    <Container>
-      <Heading size="1" content="Enquiries" />
-      <Row>
-        <Col />
-        <Col xs={12} sm={10} md={10} lg={6}>
-          <ListGroup>
-            <EnquiriesList />
-          </ListGroup>
-        </Col>
-        <Col />
-      </Row>
-    </Container>
+    <main>
+      <Container>
+        <Heading size="1" content="Enquiries" />
+        <Row>
+          <Col />
+          <Col xs={12} sm={10} md={10} lg={6}>
+            <ListGroup>
+              <EnquiriesList />
+            </ListGroup>
+          </Col>
+          <Col />
+        </Row>
+      </Container>
+    </main>
   );
 }
 

@@ -4,13 +4,13 @@ import moment from "moment";
 import useAxios from "../../hooks/useAxios";
 import { BASE_URL } from "../../constants/Api";
 import { DeleteEnquiry } from "./deleteEnquiry";
+import Loading from "../common/formfeedback/Loading";
+import SubmissionError from "../common/formfeedback/SubmissionError";
 import Container from "react-bootstrap/Container";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import { Reply } from "react-bootstrap-icons";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import Loading from "../common/formfeedback/Loading";
-import SubmissionError from "../common/formfeedback/SubmissionError";
 
 export function EnquiriesList() {
   const [enquiries, setEnquiries] = useState([]);

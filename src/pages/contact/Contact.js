@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 
 function Contact() {
   return (
-    <>
+    <main>
       <div className="hero-image-contact mb-4"></div>
       <Container className="content-wrapper">
         <Row>
@@ -26,7 +26,7 @@ function Contact() {
         </Row>
         <Container className="text-center spacer"></Container>
       </Container>
-    </>
+    </main>
   );
 }
 

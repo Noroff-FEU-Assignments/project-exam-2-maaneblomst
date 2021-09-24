@@ -3,13 +3,14 @@ import axios from "axios";
 import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
 import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
 import { BASE_URL } from "../../constants/Api";
+import SubmissionError from "../common/formfeedback/SubmissionError";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 export function AccommodationsList() {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loadError, setLoadError] = useState(null);
   const url = BASE_URL + "accommodations";
 
   useEffect(function () {
@@ -17,10 +18,9 @@ export function AccommodationsList() {
       try {
         const response = await axios.get(url);
         setAccommodations(response.data);
-        console.log(response);
       } catch (error) {
         console.log(error);
-        setError(error.toString());
+        setLoadError(error.toString());
       } finally {
         setLoading(false);
       }
@@ -36,7 +36,14 @@ export function AccommodationsList() {
       </Container>
     );
 
-  if (error) return <div>Error loading accommodations</div>;
+  if (loadError)
+    return (
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Something went wrong loading the accommodations."
+        error={loadError}
+      />
+    );
 
   return (
     <Container>
@@ -51,6 +58,7 @@ export function AccommodationsList() {
             images={
               object.images[0] == null ? PlaceholderImage : object.images[0].url
             }
+            altText={object.images[0].alternativeText}
             facilities={object.facilities}
             description={object.description}
             popular={object.popular}

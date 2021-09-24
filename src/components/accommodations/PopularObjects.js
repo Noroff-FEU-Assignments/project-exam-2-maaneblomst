@@ -4,13 +4,14 @@ import { BASE_URL } from "../../constants/Api";
 import Heading from "../common/Heading";
 import PlaceholderImage from "../../images/placeholder/accommodation-loading.png";
 import { ItemCard, PlaceholderCard } from "../cards/accommodations/Cards";
+import SubmissionError from "../common/formfeedback/SubmissionError";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 export function PopularObjects() {
   const [accommodations, setAccommodations] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loadError, setLoadError] = useState(null);
   const url = BASE_URL + "accommodations";
 
   useEffect(function () {
@@ -20,7 +21,7 @@ export function PopularObjects() {
         setAccommodations(response.data);
       } catch (error) {
         console.log(error);
-        setError(error.toString());
+        setLoadError(error.toString());
       } finally {
         setLoading(false);
       }
@@ -36,7 +37,14 @@ export function PopularObjects() {
       </Container>
     );
 
-  if (error) return <div>Error loading accommodations</div>;
+  if (loadError)
+    return (
+      <SubmissionError
+        variant="danger"
+        displayText="We're so sorry. Something went wrong loading popular accommodations."
+        error={loadError}
+      />
+    );
 
   const filtered = accommodations.filter(
     (accommodation) => accommodation.popular === true
@@ -57,6 +65,7 @@ export function PopularObjects() {
                 ? PlaceholderImage
                 : popObject.images[0].url
             }
+            altText={popObject.images[0].alternativeText}
           />
         ))}
       </Row>
