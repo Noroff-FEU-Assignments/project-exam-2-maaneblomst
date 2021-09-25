@@ -19,8 +19,13 @@ export default function EditModal({
 
   return (
     <>
-      <Button variant="link" tooltip="Edit accommodation" onClick={handleShow}>
-        <Pen size={10} />
+      <Button
+        variant="link"
+        className="text-decoration-none"
+        role="button"
+        onClick={handleShow}
+      >
+        <Pen className="m-1" />
         Edit
       </Button>
 

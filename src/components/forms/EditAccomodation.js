@@ -13,8 +13,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
-// Sett inn reset på popular-checkbox!
-
 const schema = yup.object().shape({
   name: yup.string(),
   description: yup.string(),

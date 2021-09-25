@@ -49,10 +49,12 @@ TextSectionRight.propTypes = {
   title: string.isRequired,
   content: string.isRequired,
   image: string.isRequired,
+  alt: string.isRequired,
 };
 
 TextSectionLeft.propTypes = {
   title: string.isRequired,
   content: string.isRequired,
   image: string.isRequired,
+  alt: string.isRequired,
 };

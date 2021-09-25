@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import useAxios from "../../../hooks/useAxios";
 import { BASE_URL } from "../../../constants/Api";
 import DisplayAlert from "../../common/DisplayAlert";
@@ -17,7 +16,6 @@ export default function DeleteModal({ id }) {
   const [submissionError, setSubmissionError] = useState(null);
 
   const http = useAxios();
-  const history = useHistory();
   const url = BASE_URL + "accommodations/" + id;
 
   async function handleDelete() {
@@ -55,8 +53,13 @@ export default function DeleteModal({ id }) {
     );
   return (
     <>
-      <Button variant="link" className="text-danger" onClick={handleShow}>
-        <Trash />
+      <Button
+        variant="link"
+        className="text-danger text-decoration-none"
+        role="button"
+        onClick={handleShow}
+      >
+        <Trash className="m-1" />
         Delete
       </Button>
       <Modal show={show} onHide={handleClose}>
