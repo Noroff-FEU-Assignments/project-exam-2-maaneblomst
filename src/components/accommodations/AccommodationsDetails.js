@@ -73,7 +73,7 @@ export default function AccommodationsDetails() {
       <Container fluid className="mb-4">
         <Carousel>
           {accommodation.images.map((image) => (
-            <Carousel.Item key={image.name} align="center">
+            <Carousel.Item key={image.url} align="center">
               <Image
                 className="d-block w-100 rounded"
                 src={image.url}
