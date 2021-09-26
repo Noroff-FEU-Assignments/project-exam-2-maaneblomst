@@ -65,7 +65,11 @@ export function PopularObjects() {
                 ? PlaceholderImage
                 : popObject.images[0].url
             }
-            altText={popObject.images[0].alternativeText}
+            altText={
+              popObject.images[0] == null
+                ? ""
+                : popObject.images[0].alternativeText
+            }
           />
         ))}
       </Row>
